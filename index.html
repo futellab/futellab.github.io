@@ -2,1180 +2,500 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>0math v2 // Structural Operating Matrix</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>0MATH V3 // QUANTUM MATRIX OS</title>
   <style>
     /* ==========================================================================
-       01 // THE MATHEMATICAL MATRIX DEFINITIONS & VARIABLES (:root)
+       01 // MATHEMATICAL CONSTANTS & 3D ENVIRONMENT SPATIAL MAP
        ========================================================================== */
     :root {
-      /* Global System Runtime Scale Modifiers */
-      --math-scalar: 1.0;
-      --system-perspective: 1200px;
+      /* Fibonacci Scale */
+      --fib-1: 1px; --fib-2: 2px; --fib-3: 3px; --fib-5: 5px; --fib-8: 8px;
+      --fib-13: 13px; --fib-21: 21px; --fib-34: 34px; --fib-55: 55px; --fib-89: 89px;
 
-      /* LAYER 1 — FIBONACCI: MICRO-SPACING MATRIX */
-      --fib-1: calc(1px * var(--math-scalar));
-      --fib-2: calc(2px * var(--math-scalar));
-      --fib-3: calc(3px * var(--math-scalar));
-      --fib-5: calc(5px * var(--math-scalar));
-      --fib-8: calc(8px * var(--math-scalar));
-      --fib-13: calc(13px * var(--math-scalar));
-      --fib-21: calc(21px * var(--math-scalar));
-      --fib-34: calc(34px * var(--math-scalar));
-      --fib-55: calc(55px * var(--math-scalar));
-      --fib-89: calc(89px * var(--math-scalar));
-      --fib-144: calc(144px * var(--math-scalar));
-      --fib-233: calc(233px * var(--math-scalar));
-
-      /* LAYER 2 — LUCAS: KINEMATIC TEMPORAL DURATIONS */
-      --lucas-ms-1: 10ms;   --lucas-ms-3: 30ms;   --lucas-ms-4: 40ms;
-      --lucas-ms-7: 70ms;   --lucas-ms-11: 110ms; --lucas-ms-18: 180ms;
-      --lucas-ms-29: 290ms; --lucas-ms-47: 470ms; --lucas-ms-76: 760ms;
-      --lucas-ms-123: 1230ms; --lucas-ms-199: 1990ms;
-
-      /* HARDENED KINEMATIC EASING FUNCTIONS (LUCAS DERIVED CORRECTIONS) */
-      --ease-lucas-smooth: cubic-bezier(0.18, 0.07, 0.29, 1.0);  
-      --ease-lucas-snap: cubic-bezier(0.11, 0.76, 0.18, 1.0);   
-      --ease-lucas-3d: cubic-bezier(0.47, -0.18, 0.29, 1.22);   
-      --ease-lucas-linear: cubic-bezier(0.25, 0.25, 0.75, 0.75);
-
-      /* LAYER 3 — TRIBONACCI: STRUCTURAL COMPONENT BOUNDS */
-      --trib-1: 1px;        --trib-2: 2px;        --trib-4: 4px;
-      --trib-7: 7px;        --trib-13: 13px;      --trib-24: 24px;
-      --trib-44: 44px;      --trib-81: 81px;      --trib-149: 149px;
-      --trib-274: 274px;    --trib-504: 504px;    --trib-927: 927px;
-
-      /* LAYER 4 — PADOVAN: TYPOGRAPHIC MICRO-SCALE */
-      --pad-xs: 9px;   --pad-sm: 12px;  --pad-base: 16px; --pad-md: 21px;
-      --pad-lg: 28px;  --pad-xl: 37px;  --pad-2xl: 49px;  --pad-3xl: 65px;
-      --pad-4xl: 86px; --pad-5xl: 114px;
+      /* Padovan Typography */
+      --pad-xs: 9px; --pad-sm: 12px; --pad-base: 16px; --pad-md: 21px; --pad-lg: 28px;
       
-      --ls-tight: -0.03em; --ls-normal: 0em; --ls-wide: 0.05em;
-      --ls-wider: 0.09em;  --ls-widest: 0.15em;
+      /* Lucas Kinematics (Milliseconds) */
+      --lucas-7: 70ms; --lucas-11: 110ms; --lucas-18: 180ms; --lucas-29: 290ms; --lucas-47: 470ms;
+      --ease-quantum: cubic-bezier(0.19, 1, 0.22, 1);
+      --ease-rebound: cubic-bezier(0.34, 1.56, 0.64, 1);
 
-      /* LAYER 5 — PELL: MACRO VIEWPORT STRUCTURAL VECTORS */
-      --pell-5: 5vh;    --pell-12: 12vh;   --pell-29: 29vh;
-      --pell-70: 70vh;  --pell-100: 100vh;
-      --pell-px-sidebar: 280px;
-      --pell-px-terminal: 240px;
-      --pell-px-control: 380px;
-
-      /* EXPERIMENTAL APP GRAPHICS COLOR MATRIX */
-      --color-void: #030306;
-      --color-panel-glass: rgba(9, 9, 14, 0.82);
-      --color-surface-solid: #0d0d14;
-      --color-surface-elevated: #151522;
-      --color-border-subtle: rgba(255, 255, 255, 0.03);
-      --color-border-hardened: #222230;
-      --color-border-focus: #4f46e5;
-      
-      --glow-matrix-cyan: #00f2fe;
-      --glow-matrix-indigo: #6366f1;
-      --glow-matrix-crimson: #ff0055;
-      --glow-matrix-emerald: #10b981;
-
-      --text-high-contrast: #ffffff;
-      --text-mid-contrast: #94a3b8;
-      --text-low-contrast: #475569;
+      /* Colors */
+      --c-void: #000002;
+      --c-glass: rgba(10, 12, 16, 0.45);
+      --c-glass-bright: rgba(20, 24, 32, 0.75);
+      --c-border: rgba(100, 140, 255, 0.15);
+      --c-neon-cyan: #00f0ff;
+      --c-neon-magenta: #ff003c;
+      --c-text-main: #e2e8f0;
+      --c-text-dim: #64748b;
     }
 
-    /* ==========================================================================
-       02 // CORE ENVIRONMENT RESET & HARDWARE ACCELERATION ENGINE
-       ========================================================================== */
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; user-select: none; }
 
     body {
-      background-color: var(--color-void);
-      color: var(--text-mid-contrast);
-      font-family: ui-monospace, 'SF Mono', Monaco, Consolas, monospace;
-      font-size: var(--pad-base);
-      line-height: var(--fib-21);
+      background: var(--c-void);
+      color: var(--c-text-main);
+      font-family: 'SF Mono', Consolas, monospace;
       overflow: hidden;
-      height: var(--pell-100);
-      width: 100vw;
+      width: 100vw; height: 100vh;
+      perspective: 1500px;
+      transform-style: preserve-3d;
+    }
+
+    /* WEBGL GPU RENDER TARGET */
+    #gl-canvas {
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0;
+      pointer-events: none; /* Let clicks pass to UI */
+    }
+
+    /* MAIN OS GRID */
+    #os-viewport {
+      position: absolute; inset: 0; z-index: 10;
       display: grid;
-      grid-template-columns: var(--pell-px-sidebar) 1fr var(--pell-px-control);
-      grid-template-rows: var(--fib-55) 1fr var(--pell-px-terminal);
-      grid-template-areas:
-        "header header header"
-        "sidebar stage console"
-        "terminal terminal terminal";
-      perspective: var(--system-perspective);
-    }
-
-    /* Hardware Accelerated Spatial Background Vector Array Grid */
-    body::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      z-index: 0;
-      background-image: 
-        linear-gradient(var(--color-border-subtle) 1px, transparent 1px),
-        linear-gradient(90deg, var(--color-border-subtle) 1px, transparent 1px);
-      background-size: var(--fib-34) var(--fib-34);
-      transform: rotateX(65deg) translateY(-20%) translateZ(-300px);
-      transform-origin: top center;
-      opacity: 0.6;
-      pointer-events: none;
-      will-change: transform;
-    }
-
-    /* Typographic Hierarchy Bindings via Padovan */
-    h1, h2, h3, h4, h5 {
-      color: var(--text-high-contrast);
-      font-weight: 700;
-      letter-spacing: var(--ls-tight);
-    }
-    h1 { font-size: var(--pad-4xl); line-height: 1.1; }
-    h2 { font-size: var(--pad-3xl); line-height: 1.2; }
-    h3 { font-size: var(--pad-2xl); line-height: 1.2; }
-    h4 { font-size: var(--pad-xl); line-height: 1.3; }
-    h5 { font-size: var(--pad-lg); line-height: 1.4; letter-spacing: var(--ls-wide); }
-    code { font-family: inherit; color: var(--glow-matrix-cyan); background: rgba(0,0,0,0.4); padding: var(--fib-2) var(--fib-5); border-radius: var(--fib-2); }
-
-    /* Custom Spatial Scrollbar Overrides */
-    ::-webkit-scrollbar { width: var(--fib-5); height: var(--fib-5); }
-    ::-webkit-scrollbar-track { background: transparent; }
-    ::-webkit-scrollbar-thumb { background: var(--color-border-hardened); border-radius: var(--fib-3); }
-    ::-webkit-scrollbar-thumb:hover { background: var(--color-border-focus); }
-
-    /* ==========================================================================
-       03 // FIXED INTERFACE PANELS (APP GLASS ARCHITECTURE)
-       ========================================================================== */
-    header {
-      grid-area: header;
-      background: var(--color-panel-glass);
-      border-bottom: 1px solid var(--color-border-subtle);
-      backdrop-filter: blur(16px);
-      z-index: 100;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 var(--fib-21);
-    }
-
-    .app-logo {
-      font-size: var(--pad-sm);
-      font-weight: 900;
-      letter-spacing: var(--ls-widest);
-      color: var(--text-high-contrast);
-      text-transform: uppercase;
-    }
-    .app-logo span { color: var(--glow-matrix-indigo); }
-
-    #sidebar-menu {
-      grid-area: sidebar;
-      background: var(--color-panel-glass);
-      border-right: 1px solid var(--color-border-subtle);
-      backdrop-filter: blur(16px);
-      z-index: 90;
-      padding: var(--fib-34) var(--fib-13);
-      display: flex;
-      flex-direction: column;
-      gap: var(--fib-55);
-    }
-
-    .matrix-section-title {
-      font-size: var(--pad-xs);
-      color: var(--text-low-contrast);
-      text-transform: uppercase;
-      letter-spacing: var(--ls-widest);
-      font-weight: 800;
-      padding-bottom: var(--fib-8);
-      border-bottom: 1px solid var(--color-border-subtle);
-    }
-
-    .nav-pipeline-stack {
-      display: flex;
-      flex-direction: column;
-      gap: var(--fib-8);
-      list-style: none;
-    }
-
-    .nav-pipeline-item a {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      color: var(--text-mid-contrast);
-      text-decoration: none;
-      font-size: var(--pad-sm);
-      padding: var(--fib-13);
-      border-radius: var(--fib-3);
-      border: 1px solid transparent;
-      transition: all var(--lucas-ms-18) var(--ease-lucas-smooth);
-    }
-    .nav-pipeline-item a:hover {
-      color: var(--text-high-contrast);
-      background: rgba(255,255,255,0.01);
-      border-color: rgba(255,255,255,0.05);
-    }
-    .nav-pipeline-item.active-route-node a {
-      color: var(--text-high-contrast);
-      background: var(--color-surface-elevated);
-      border-color: var(--color-border-focus);
-      box-shadow: 0 0 var(--fib-21) rgba(99, 102, 241, 0.15);
-    }
-
-    /* RIGHT TELEMETRY CONTROL PANEL */
-    #control-telemetry-panel {
-      grid-area: console;
-      background: var(--color-panel-glass);
-      border-left: 1px solid var(--color-border-subtle);
-      backdrop-filter: blur(16px);
-      z-index: 90;
+      grid-template-columns: var(--fib-89) 1fr 350px;
+      grid-template-rows: var(--fib-55) 1fr var(--fib-89);
       padding: var(--fib-21);
-      display: flex;
-      flex-direction: column;
       gap: var(--fib-21);
-      overflow-y: auto;
-    }
-
-    .telemetry-card {
-      background: var(--color-surface-solid);
-      border: 1px solid var(--color-border-hardened);
-      border-radius: var(--fib-5);
-      padding: var(--fib-13);
+      pointer-events: none; /* Only children are interactive */
       transform-style: preserve-3d;
-      transition: border-color var(--lucas-ms-18) var(--ease-lucas-smooth);
-    }
-    .telemetry-card:hover { border-color: var(--color-border-focus); }
-    
-    .telemetry-metric-large {
-      font-size: var(--pad-2xl);
-      color: var(--glow-matrix-cyan);
-      font-weight: 700;
-      margin-top: var(--fib-5);
     }
 
-    /* Interactive Inputs & Sliders Core */
-    .system-range-slider {
-      width: 100%;
-      margin-top: var(--fib-13);
-      accent-color: var(--glow-matrix-indigo);
-      background: var(--color-void);
-      height: var(--fib-3);
-      border-radius: var(--fib-2);
-      cursor: pointer;
-    }
-
-    /* ==========================================================================
-       04 // PERSPECTIVE VIEWPORT STAGE PLATFORM
-       ========================================================================== */
-    #workspace-stage {
-      grid-area: stage;
-      overflow-y: auto;
-      overflow-x: hidden;
-      padding: var(--fib-55);
-      z-index: 10;
-      position: relative;
-      transform-style: preserve-3d;
-      container-type: inline-size;
-      container-name: stage-container;
-    }
-
-    /* View Transitions Structural Wrapper Matrix */
-    .view-apparatus-envelope {
-      opacity: 0;
-      transform: translateZ(-200px) rotateX(12deg);
-      transition: 
-        opacity var(--lucas-ms-47) var(--ease-lucas-smooth),
-        transform var(--lucas-ms-47) var(--ease-lucas-3d);
-      transform-style: preserve-3d;
-      will-change: transform, opacity;
-    }
-
-    .view-apparatus-envelope.pipeline-mounted {
-      opacity: 1;
-      transform: translateZ(0px) rotateX(0deg);
-    }
-
-    /* ==========================================================================
-       05 // HARDENED 3D COMPONENT UI/UX SPECIFICATIONS
-       ========================================================================== */
-    .bento-spatial-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(var(--trib-bound-card), 1fr));
-      gap: var(--fib-34);
-      transform-style: preserve-3d;
-      margin-top: var(--fib-34);
-    }
-
-    @container stage-container (min-width: 800px) {
-      .bento-span-2x { grid-column: span 2; }
-    }
-
-    /* Kinetic 3D Holographic Card Chassis */
-    .hologram-chassis-card {
-      background: var(--color-surface-solid);
-      border: 1px solid var(--color-border-hardened);
+    .os-panel {
+      background: var(--c-glass);
+      backdrop-filter: blur(24px) saturate(150%);
+      -webkit-backdrop-filter: blur(24px) saturate(150%);
+      border: 1px solid var(--c-border);
       border-radius: var(--fib-8);
-      padding: var(--fib-34);
-      position: relative;
+      pointer-events: auto;
       transform-style: preserve-3d;
-      cursor: crosshair;
-      transition: border-color var(--lucas-ms-18) var(--ease-lucas-smooth);
-    }
-    .hologram-chassis-card:hover { border-color: rgba(99, 102, 241, 0.4); }
-
-    /* Spatial Depth Offsetting Handles */
-    .depth-plane-z1 { transform: translateZ(20px); transition: transform var(--lucas-ms-18) var(--ease-lucas-3d); }
-    .depth-plane-z2 { transform: translateZ(45px); }
-    .depth-plane-z3 { transform: translateZ(70px); text-shadow: 0 var(--fib-13) var(--fib-21) rgba(0,0,0,0.9); }
-
-    .card-raycast-glare {
-      position: absolute;
-      inset: 0;
-      border-radius: inherit;
-      pointer-events: none;
-      background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255,255,255,0.05) 0%, transparent 65%);
-      z-index: 5;
-    }
-
-    /* High Fidelity Kinetic Action Triggers */
-    .kinetic-action-trigger {
-      background: linear-gradient(135deg, rgba(99,102,241,0.12), rgba(0,242,254,0.03));
-      border: 1px solid var(--color-border-focus);
-      color: var(--text-high-contrast);
-      font-family: inherit;
-      font-size: var(--pad-sm);
-      font-weight: bold;
-      padding: var(--fib-13) var(--fib-21);
-      border-radius: var(--fib-3);
-      cursor: pointer;
       position: relative;
       overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.1);
+      transition: border-color var(--lucas-18) var(--ease-quantum);
+    }
+
+    .os-panel::before {
+      content: ''; position: absolute; inset: 0; z-index: -1;
+      background: linear-gradient(125deg, transparent 0%, rgba(0, 240, 255, 0.03) 100%);
+    }
+
+    /* TOP HEADER */
+    header { grid-column: 1 / -1; display: flex; justify-content: space-between; align-items: center; padding: 0 var(--fib-21); }
+    .os-brand { font-size: var(--pad-sm); font-weight: 900; letter-spacing: 0.2em; text-transform: uppercase; }
+    .os-brand span { color: var(--c-neon-cyan); text-shadow: 0 0 10px var(--c-neon-cyan); }
+
+    /* LEFT TOOLBAR */
+    nav { grid-column: 1 / 2; grid-row: 2 / -1; display: flex; flex-direction: column; gap: var(--fib-13); padding: var(--fib-21) 0; align-items: center; }
+    .nav-node {
+      width: var(--fib-34); height: var(--fib-34); border-radius: 50%;
+      border: 1px solid var(--c-border); display: grid; place-items: center;
+      cursor: pointer; transition: all var(--lucas-29) var(--ease-rebound);
+    }
+    .nav-node:hover { background: var(--c-neon-cyan); box-shadow: 0 0 20px rgba(0, 240, 255, 0.4); transform: scale(1.2) translateZ(20px); border-color: transparent; }
+
+    /* CENTER WORKSPACE (3D KINEMATICS) */
+    main { grid-column: 2 / 3; grid-row: 2 / 3; display: grid; place-items: center; perspective: 2000px; }
+    
+    .quantum-card {
+      width: 400px; height: 500px;
+      background: var(--c-glass-bright); border: 1px solid rgba(255,255,255,0.1);
+      border-radius: var(--fib-13); padding: var(--fib-34);
       transform-style: preserve-3d;
-      transition: all var(--lucas-ms-11) var(--ease-lucas-snap);
-    }
-    .kinetic-action-trigger:hover {
-      transform: translateY(-2px) translateZ(15px);
-      box-shadow: 0 var(--fib-13) var(--fib-34) rgba(99, 102, 241, 0.3);
-      border-color: var(--glow-matrix-cyan);
-    }
-    .kinetic-action-trigger:active { transform: translateY(1px) translateZ(2px); }
-
-    /* Hardware Performance Metric Rails */
-    .metric-rail {
-      background: var(--color-void);
-      height: var(--fib-8);
-      border-radius: var(--fib-2);
-      overflow: hidden;
-      margin-top: var(--fib-8);
-      position: relative;
-    }
-    .metric-rail-fill {
-      height: 100%;
-      width: 0%;
-      background: linear-gradient(90deg, var(--glow-matrix-indigo), var(--glow-matrix-cyan));
-      transition: width var(--lucas-ms-76) var(--ease-lucas-smooth);
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8);
+      /* Kinematic tracking happens via JS inline styles */
     }
 
-    /* Procedural Realtime Signal Monitor Canvas */
-    .signal-canvas-viewport {
-      width: 100%;
-      height: var(--fib-144);
-      background: rgba(0,0,0,0.4);
-      border: 1px solid var(--color-border-hardened);
-      border-radius: var(--fib-5);
-      margin-top: var(--fib-21);
-      display: block;
+    .q-layer-1 { transform: translateZ(30px); font-size: var(--pad-xs); color: var(--c-neon-magenta); letter-spacing: 0.2em; }
+    .q-layer-2 { transform: translateZ(60px); font-size: var(--pad-lg); font-weight: 800; margin-top: var(--fib-13); text-shadow: 0 10px 20px rgba(0,0,0,0.5); }
+    .q-layer-3 { transform: translateZ(90px); margin-top: var(--fib-34); }
+    
+    .q-btn {
+      background: rgba(0, 240, 255, 0.1); border: 1px solid var(--c-neon-cyan);
+      color: var(--c-neon-cyan); padding: var(--fib-13) var(--fib-21);
+      font-family: inherit; font-size: var(--pad-sm); cursor: pointer;
+      text-transform: uppercase; letter-spacing: 0.1em;
+      transition: all var(--lucas-18) var(--ease-quantum);
     }
+    .q-btn:hover { background: var(--c-neon-cyan); color: #000; box-shadow: 0 0 30px rgba(0, 240, 255, 0.5); transform: translateZ(10px); }
 
-    /* ==========================================================================
-       06 // HARDENED RETRO TERMINAL SHELL ARCHITECTURE
-       ========================================================================== */
-    #system-terminal-shell {
-      grid-area: terminal;
-      background: #020204;
-      border-top: 1px solid var(--color-border-hardened);
-      z-index: 100;
-      display: flex;
-      flex-direction: column;
-      font-size: var(--pad-xs);
-      font-family: inherit;
-      box-sizing: border-box;
-    }
+    /* RIGHT TELEMETRY PANEL */
+    aside { grid-column: 3 / 4; grid-row: 2 / -1; padding: var(--fib-21); display: flex; flex-direction: column; gap: var(--fib-21); overflow-y: auto; }
+    .telemetry-block { border-bottom: 1px solid var(--c-border); padding-bottom: var(--fib-13); }
+    .t-label { font-size: var(--pad-xs); color: var(--c-text-dim); }
+    .t-val { font-size: var(--pad-md); color: var(--c-neon-cyan); font-weight: bold; font-variant-numeric: tabular-nums; }
 
-    .terminal-header {
-      background: #08080c;
-      padding: var(--fib-5) var(--fib-13);
-      border-bottom: 1px solid var(--color-border-subtle);
-      display: flex;
-      justify-content: space-between;
-      color: var(--text-low-contrast);
-      letter-spacing: var(--ls-wide);
-    }
+    /* CUSTOM CANVAS GRAPH IN TELEMETRY */
+    #data-canvas { width: 100%; height: 100px; background: rgba(0,0,0,0.5); border-radius: var(--fib-5); margin-top: var(--fib-8); }
 
-    .terminal-output-buffer {
-      flex: 1;
-      padding: var(--fib-8) var(--fib-13);
-      overflow-y: auto;
-      display: flex;
-      flex-direction: column;
-      gap: var(--fib-2);
-      color: var(--glow-matrix-emerald);
-    }
-
-    .terminal-row-error { color: var(--glow-matrix-crimson); }
-    .terminal-row-system { color: var(--text-mid-contrast); }
-    .terminal-row-success { color: var(--glow-matrix-cyan); }
-
-    .terminal-input-row {
-      display: flex;
-      align-items: center;
-      padding: var(--fib-5) var(--fib-13);
-      background: #010102;
-      border-top: 1px solid rgba(255,255,255,0.01);
-    }
-    .terminal-prompt { color: var(--glow-matrix-indigo); font-weight: bold; margin-right: var(--fib-8); }
-    .terminal-input-element {
-      flex: 1;
-      background: transparent;
-      border: none;
-      outline: none;
-      color: #ffffff;
-      font-family: inherit;
-      font-size: inherit;
-    }
-
-    /* Core Platform Spin Matrix Pipeline Preloader */
-    .pipeline-core-loader {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%) rotateX(45deg);
-      width: var(--fib-55);
-      height: var(--fib-55);
-      border: var(--fib-3) solid var(--color-border-hardened);
-      border-top-color: var(--glow-matrix-cyan);
-      border-bottom-color: var(--glow-matrix-crimson);
-      border-radius: 50%;
-      animation: loopLoaderFrame var(--lucas-ms-76) linear infinite;
-    }
-    @keyframes loopLoaderFrame { to { transform: translate(-50%, -50%) rotateX(45deg) rotate(360deg); } }
+    /* BOTTOM TERMINAL */
+    footer { grid-column: 2 / 3; grid-row: 3 / 4; padding: var(--fib-13); font-size: var(--pad-xs); display: flex; flex-direction: column; justify-content: flex-end; }
+    .log-line { color: var(--c-text-dim); margin-top: 2px; }
+    .log-line.sys { color: var(--c-neon-magenta); }
+    .log-line.ok { color: var(--c-neon-cyan); }
   </style>
 </head>
 <body>
 
-  <header>
-    <div class="app-logo">0MATH // CONSOLE // <span>V2.HARDENED</span></div>
-    <div style="font-size: var(--pad-xs); color: var(--text-low-contrast);" id="system-wall-clock">SYS_CLOCK: 00:00:00</div>
-  </header>
+  <canvas id="gl-canvas"></canvas>
 
-  <aside id="sidebar-menu">
-    <div>
-      <div class="matrix-section-title">Operational Pipelines</div>
-      <ul class="nav-pipeline-stack" style="margin-top: var(--fib-13);">
-        <li class="nav-pipeline-item active-route-node" data-route="dashboard"><a href="#dashboard"><span>01 // Matrix Spec</span><span>✥</span></a></li>
-        <li class="nav-pipeline-item" data-route="vectors"><a href="#vectors"><span>02 // Vector Array</span><span>📊</span></a></li>
-        <li class="nav-pipeline-item" data-route="kinematics"><a href="#kinematics"><span>03 // Kinematic Wave</span><span>⚡</span></a></li>
-      </ul>
-    </div>
-    
-    <div>
-      <div class="matrix-section-title">Audio Matrix Spatialization</div>
-      <div style="margin-top: var(--fib-13); font-size: var(--pad-xs); display:flex; justify-content:space-between; align-items:center;">
-        <span>WebAudio Synth Engine</span>
-        <button class="kinetic-action-trigger" id="audio-bootstrap-btn" style="padding: var(--fib-5) var(--fib-8); font-size: 10px;">BOOT STRAP</button>
-      </div>
-    </div>
-  </aside>
+  <div id="os-viewport">
+    <header class="os-panel">
+      <div class="os-brand">0MATH <span>V3.QUANTUM</span></div>
+      <div style="font-size: var(--pad-xs); color: var(--c-text-dim);" id="sys-clock">00:00:00:000</div>
+    </header>
 
-  <main id="workspace-stage">
-    <div id="router-view-mount"></div>
-  </main>
+    <nav class="os-panel">
+      <div class="nav-node" onclick="System.audio.ping(200)"></div>
+      <div class="nav-node" onclick="System.audio.ping(400)"></div>
+      <div class="nav-node" onclick="System.audio.ping(600)"></div>
+      <div class="nav-node" onclick="System.audio.ping(800)"></div>
+    </nav>
 
-  <aside id="control-telemetry-panel">
-    <div class="matrix-section-title">Telemetry Stream Monitors</div>
-    
-    <div class="telemetry-card">
-      <p style="font-size: var(--pad-xs); color: var(--text-low-contrast);">HARDWARE DISPATCH ACCELERATION</p>
-      <div class="telemetry-metric-large" id="telemetry-fps">-- HZ</div>
-      <p style="font-size: var(--pad-xs); color: var(--text-low-contrast); margin-top: var(--fib-3);">Target Stability Matrix: 60FPS</p>
-    </div>
-
-    <div class="telemetry-card">
-      <p style="font-size: var(--pad-xs); color: var(--text-low-contrast);">LIFECYCLE PIPELINE SPEED</p>
-      <div class="telemetry-metric-large" id="telemetry-mount-speed" style="color: var(--glow-matrix-indigo);">-- MS</div>
-    </div>
-
-    <div class="telemetry-card">
-      <p style="font-size: var(--pad-xs); color: var(--text-low-contrast);">SYSTEM RUNTIME MATRIX SCALAR</p>
-      <input type="range" min="0.5" max="2.0" step="0.05" value="1.0" class="system-range-slider" id="global-matrix-scalar-input">
-      <div style="display: flex; justify-content: space-between; font-size: var(--pad-xs); margin-top: var(--fib-8);">
-        <span>MIN: 0.5x</span>
-        <span id="scalar-feedback-value" style="color: var(--glow-matrix-cyan); font-weight: bold;">1.00x</span>
-        <span>MAX: 2.0x</span>
-      </div>
-    </div>
-
-    <div class="telemetry-card" style="flex: 1; display: flex; flex-direction: column; overflow: hidden;">
-      <p style="font-size: var(--pad-xs); color: var(--text-low-contrast); margin-bottom: var(--fib-8);">ACTIVE REGISTERS BUFFER</p>
-      <div id="active-registers-pool" style="font-size:10px; color:var(--text-mid-contrast); overflow-y:auto; flex:1; display:flex; flex-direction:column; gap:4px;">
-        </div>
-    </div>
-  </aside>
-
-  <footer id="system-terminal-shell">
-    <div class="terminal-header">
-      <span>0MATH-ENVIRONMENT-KERNEL-V2.0.0-RELEASE</span>
-      <span id="terminal-cursor-pos">LINE: 0001 COL: 0001</span>
-    </div>
-    <div class="terminal-output-buffer" id="terminal-log-buffer">
-      <div class="terminal-row-system">Initializing 0math kernel operational threads... Success.</div>
-      <div class="terminal-row-system">System perspective mapped securely to 1200px context.</div>
-      <div class="terminal-row-success">Awaiting input script payload matrix variables. Type 'help' for console commands.</div>
-    </div>
-    <div class="terminal-input-row">
-      <span class="terminal-prompt">0math://kernel&gt;</span>
-      <input type="text" class="terminal-input-element" id="kernel-command-line-input" autocomplete="off" spellcheck="false">
-    </div>
-  </footer>
-
-  <template id="view-dashboard">
-    <div class="view-apparatus-envelope">
-      <h2>01 // Mathematical Architecture Specification Matrix</h2>
-      <p style="margin-top: var(--fib-8); font-size: var(--pad-sm); color: var(--text-mid-contrast);">
-        Dynamic structural orchestration mapping five distinct sequences onto native viewport contexts without configuration leaks.
-      </p>
-
-      <div class="bento-spatial-grid">
-        <div class="hologram-chassis-card dynamic-3d-tilt-node bento-span-2x">
-          <div class="card-raycast-glare"></div>
-          <div class="depth-plane-z1" style="font-size: var(--pad-xs); color: var(--glow-matrix-cyan); font-weight: bold;">SEQUENCE MATRIX // FIBONACCI</div>
-          <h3 class="depth-plane-z2" style="margin-top: var(--fib-8);">Micro-Spacing Scale Vector</h3>
-          <p class="depth-plane-z1" style="font-size: var(--pad-sm); margin-top: var(--fib-13); color: var(--text-mid-contrast); max-width: var(--trib-504);">
-            Powers paddings, margins, gaps, component corner radii, and outline stroke alignments natively across coordinates.
-          </p>
-          <div class="metric-rail"><div class="metric-rail-fill" data-gauge-width="85%"></div></div>
-          <div style="margin-top: var(--fib-21); display: flex; gap: var(--fib-8);">
-            <button class="kinetic-action-trigger trigger-audio-ping">Execute Stack Vector Audit</button>
-            <button class="kinetic-action-trigger trigger-audio-ping" style="border-color: var(--color-border-hardened); background: transparent;">Dump Registers</button>
-          </div>
-        </div>
-
-        <div class="hologram-chassis-card dynamic-3d-tilt-node">
-          <div class="card-raycast-glare"></div>
-          <div class="depth-plane-z1" style="font-size: var(--pad-xs); color: var(--glow-matrix-crimson); font-weight: bold;">SEQUENCE MATRIX // PADOVAN</div>
-          <h3 class="depth-plane-z2" style="margin-top: var(--fib-8);">Non-Harmonic Typography</h3>
-          <p style="font-size: var(--pad-sm); margin-top: var(--fib-13); color: var(--text-low-contrast);">
-            Drives micro-typographic font matrices avoiding traditional integer multiples for layout balancing elements.
-          </p>
-          <div class="metric-rail"><div class="metric-rail-fill" data-gauge-width="44%"></div></div>
-        </div>
-
-        <div class="hologram-chassis-card dynamic-3d-tilt-node">
-          <div class="card-raycast-glare"></div>
-          <div class="depth-plane-z1" style="font-size: var(--pad-xs); color: var(--glow-matrix-indigo); font-weight: bold;">SEQUENCE MATRIX // PELL</div>
-          <h3 class="depth-plane-z2" style="margin-top: var(--fib-8);">Macro Matrix Constancies</h3>
-          <p style="font-size: var(--pad-sm); margin-top: var(--fib-13); color: var(--text-low-contrast);">
-            Secures structural canvas footprints, device drawers, and high-level layout wrappers to silver multipliers.
-          </p>
-          <div class="metric-rail"><div class="metric-rail-fill" data-gauge-width="68%"></div></div>
+    <main>
+      <div class="quantum-card" id="k-card">
+        <div class="q-layer-1">SPATIAL_NODE // 0x4A</div>
+        <div class="q-layer-2">Multi-Axis Kinematic Manifold</div>
+        <div class="q-layer-3">
+          <p style="font-size: var(--pad-sm); color: var(--c-text-dim); margin-bottom: var(--fib-21);">Hover to calculate transform matrices. Clicking dispatches WebAudio oscillator bursts mapped to cursor coordinates.</p>
+          <button class="q-btn" onclick="System.triggerQuantumPulse()">Initiate Pulse</button>
         </div>
       </div>
-    </div>
-  </template>
+    </main>
 
-  <template id="view-vectors">
-    <div class="view-apparatus-envelope">
-      <h2>02 // Mathematical Structural Array Matrix Grid</h2>
-      <p style="margin-top: var(--fib-8); font-size: var(--pad-sm); color: var(--text-mid-contrast);">
-        Testing dense system object array calculations against concurrent thread synchronization rendering pipelines.
-      </p>
-
-      <canvas class="signal-canvas-viewport" id="procedural-spiral-canvas-target"></canvas>
-
-      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: var(--fib-13); margin-top: var(--fib-34); transform-style: preserve-3d;" id="dense-vector-nodes-hook">
-        </div>
-    </div>
-  </template>
-
-  <template id="view-kinematics">
-    <div class="view-apparatus-envelope">
-      <h2>03 // Kinematic Interpellation Waveforms Workbench</h2>
-      <p style="margin-top: var(--fib-8); font-size: var(--pad-sm); color: var(--text-mid-contrast);">
-        Analyzing browser thread layout engine transformations via strict Lucas sequence cubic-bezier configurations.
-      </p>
-
-      <div class="bento-spatial-grid">
-        <div class="hologram-chassis-card bento-span-2x">
-          <h4 style="color: var(--text-high-contrast); margin-bottom: var(--fib-21);">Asynchronous Velocity Transformation Vector Arrays</h4>
-          
-          <div style="display: flex; flex-direction: column; gap: var(--fib-21);">
-            <div>
-              <div style="display: flex; justify-content: space-between; font-size: var(--pad-xs); margin-bottom: var(--fib-5);">
-                <span>Browser Primitive Linear (Arbitrary)</span><code>transition-timing-function: linear</code>
-              </div>
-              <div style="background: var(--color-void); border: 1px solid var(--color-border-hardened); height: var(--fib-34); border-radius: var(--fib-3); position: relative; overflow: hidden;">
-                <div class="kinematic-runner-block" id="runner-linear" style="height: 100%; width: var(--fib-55); background: var(--text-low-contrast); position: absolute; left: 0px; transition: left var(--lucas-ms-123) var(--ease-lucas-linear);"></div>
-              </div>
-            </div>
-
-            <div>
-              <div style="display: flex; justify-content: space-between; font-size: var(--pad-xs); margin-bottom: var(--fib-5);">
-                <span>0math Lucas Deceleration (Premium Smooth)</span><code>var(--ease-lucas-smooth)</code>
-              </div>
-              <div style="background: var(--color-void); border: 1px solid var(--color-border-hardened); height: var(--fib-34); border-radius: var(--fib-3); position: relative; overflow: hidden;">
-                <div class="kinematic-runner-block" id="runner-smooth" style="height: 100%; width: var(--fib-55); background: var(--glow-matrix-indigo); position: absolute; left: 0px; transition: left var(--lucas-ms-123) var(--ease-lucas-smooth);"></div>
-              </div>
-            </div>
-
-            <div>
-              <div style="display: flex; justify-content: space-between; font-size: var(--pad-xs); margin-bottom: var(--fib-5);">
-                <span>0math Lucas Spatial Overshoot (Kinetic Momentum)</span><code>var(--ease-lucas-3d)</code>
-              </div>
-              <div style="background: var(--color-void); border: 1px solid var(--color-border-hardened); height: var(--fib-34); border-radius: var(--fib-3); position: relative; overflow: hidden;">
-                <div class="kinematic-runner-block" id="runner-3d" style="height: 100%; width: var(--fib-55); background: var(--glow-matrix-cyan); position: absolute; left: 0px; transition: left var(--lucas-ms-123) var(--ease-lucas-3d);"></div>
-              </div>
-            </div>
-          </div>
-
-          <div style="margin-top: var(--fib-34); display: flex; justify-content: space-between; align-items: center;">
-            <button class="kinetic-action-trigger" id="fire-kinematics-cycle-btn">Dispatch Thread Transformation Vectors</button>
-            <div style="font-size: var(--pad-xs); color: var(--glow-matrix-crimson);" id="kinematics-state-readout">STATUS // STEADY_STATE</div>
-          </div>
-        </div>
+    <aside class="os-panel">
+      <div class="telemetry-block">
+        <div class="t-label">GPU RENDER PIPELINE</div>
+        <div class="t-val" id="hud-fps">000 FPS</div>
       </div>
-    </div>
-  </template>
+      <div class="telemetry-block">
+        <div class="t-label">KINEMATIC TILT (X, Y)</div>
+        <div class="t-val" id="hud-tilt">0.00, 0.00</div>
+      </div>
+      <div class="telemetry-block">
+        <div class="t-label">WORKER THREAD CALCS</div>
+        <div class="t-val" id="hud-worker">IDLE</div>
+      </div>
+      <div class="telemetry-block" style="border:none;">
+        <div class="t-label">AUDIO OSCILLOSCOPE</div>
+        <canvas id="data-canvas"></canvas>
+      </div>
+    </aside>
+
+    <footer class="os-panel" id="terminal-out">
+      <div class="log-line sys">[SYSTEM] Booting Quantum Matrix OS...</div>
+    </footer>
+  </div>
 
   <script>
-    'use strict';
-
     /**
-     * CENTRAL GLOBAL CORE CONSOLE APP KERNEL SPECIFICATION
-     * Houses state storage patterns, math calculations, and sub-systems modules.
+     * 0MATH V3 // UNIFIED SYSTEM KERNEL
+     * Warning: High density JavaScript architecture.
      */
-    const OMathKernel = {
-      state: {
-        currentRoute: 'dashboard',
-        globalScalar: 1.0,
-        fpsRate: 60,
-        activeLogCount: 0,
-        audioContextActive: false,
-        systemRegisters: []
+    const System = {
+      state: { fps: 0, mouseX: 0, mouseY: 0, tiltX: 0, tiltY: 0 },
+      log: (msg, type='log-line') => {
+        const term = document.getElementById('terminal-out');
+        const line = document.createElement('div');
+        line.className = type;
+        line.innerText = `[${new Date().toISOString().split('T')[1].slice(0,-1)}] ${msg}`;
+        term.appendChild(line);
+        if(term.children.length > 6) term.removeChild(term.children[0]);
       },
-      
-      // Sequence generators ensuring absolute accuracy mapping values out dynamically
-      math: {
-        generateFibonacci: (n) => {
-          let sequence = [1, 1];
-          for (let i = 2; i <= n; i++) sequence.push(sequence[i - 1] + sequence[i - 2]);
-          return sequence[n];
+
+      /* ==========================================================
+         WEBGL ENGINE: NATIVE GLSL RAYMARCHING FRACTAL
+         ========================================================== */
+      gl: {
+        canvas: null, ctx: null, program: null, startTime: Date.now(),
+        init: function() {
+          this.canvas = document.getElementById('gl-canvas');
+          this.ctx = this.canvas.getContext('webgl2') || this.canvas.getContext('webgl');
+          if(!this.ctx) return System.log("WebGL not supported.", "log-line sys");
+          
+          this.resize();
+          window.addEventListener('resize', () => this.resize());
+
+          const vsSource = `attribute vec2 position; void main() { gl_Position = vec4(position, 0.0, 1.0); }`;
+          // Complex mathematical noise/fractal shader
+          const fsSource = `
+            precision highp float;
+            uniform vec2 u_resolution;
+            uniform float u_time;
+            uniform vec2 u_mouse;
+
+            // Mathematical rotation matrix
+            mat2 rot(float a) { return mat2(cos(a), -sin(a), sin(a), cos(a)); }
+
+            void main() {
+              vec2 uv = (gl_FragCoord.xy - 0.5 * u_resolution.xy) / u_resolution.y;
+              vec2 m = u_mouse / u_resolution;
+              
+              vec3 col = vec3(0.0);
+              vec3 ro = vec3(0.0, 0.0, -3.0); // Ray origin
+              vec3 rd = normalize(vec3(uv, 1.0)); // Ray direction
+
+              // Camera rotation based on mouse
+              rd.yz *= rot(-m.y * 0.5 + 0.2);
+              rd.xz *= rot(-m.x * 0.5);
+
+              float t = 0.0;
+              for(int i=0; i<60; i++) {
+                vec3 p = ro + rd * t;
+                
+                // Procedural folding logic (Mathematical Boundary Pushing)
+                p.z += u_time * 0.2;
+                p.xy = mod(p.xy + 1.0, 2.0) - 1.0;
+                
+                float d = length(p) - 0.4; // Sphere SDF
+                
+                // Add high frequency mathematical noise
+                d += sin(p.x*10.0 + u_time)*0.05 * sin(p.y*10.0)*0.05;
+
+                if(d < 0.001) {
+                  // Lighting calculation
+                  float light = float(i) / 60.0;
+                  col = vec3(0.0, 0.8, 1.0) * (1.0 - light);
+                  col += vec3(1.0, 0.0, 0.2) * light;
+                  break;
+                }
+                t += d * 0.5;
+              }
+              
+              // Fog
+              col = mix(col, vec3(0.0, 0.0, 0.01), 1.0 - exp(-0.1 * t * t));
+              gl_FragColor = vec4(col, 1.0);
+            }
+          `;
+
+          const vs = this.compile(this.ctx.VERTEX_SHADER, vsSource);
+          const fs = this.compile(this.ctx.FRAGMENT_SHADER, fsSource);
+          this.program = this.ctx.createProgram();
+          this.ctx.attachShader(this.program, vs);
+          this.ctx.attachShader(this.program, fs);
+          this.ctx.linkProgram(this.program);
+          this.ctx.useProgram(this.program);
+
+          // Fullscreen quad
+          const buffer = this.ctx.createBuffer();
+          this.ctx.bindBuffer(this.ctx.ARRAY_BUFFER, buffer);
+          this.ctx.bufferData(this.ctx.ARRAY_BUFFER, new Float32Array([-1,-1, 1,-1, -1,1, -1,1, 1,-1, 1,1]), this.ctx.STATIC_DRAW);
+          
+          const pos = this.ctx.getAttribLocation(this.program, "position");
+          this.ctx.enableVertexAttribArray(pos);
+          this.ctx.vertexAttribPointer(pos, 2, this.ctx.FLOAT, false, 0, 0);
+
+          System.log("WebGL Native Pipeline Initialized.", "log-line ok");
+          this.render();
         },
-        generateLucas: (n) => {
-          let sequence = [2, 1];
-          for (let i = 2; i <= n; i++) sequence.push(sequence[i - 1] + sequence[i - 2]);
-          return sequence[n];
+        compile: function(type, source) {
+          const s = this.ctx.createShader(type);
+          this.ctx.shaderSource(s, source);
+          this.ctx.compileShader(s);
+          return s;
         },
-        generateTribonacci: (n) => {
-          let sequence = [1, 1, 2];
-          for (let i = 3; i <= n; i++) sequence.push(sequence[i - 1] + sequence[i - 2] + sequence[i - 3]);
-          return sequence[n];
+        resize: function() {
+          this.canvas.width = window.innerWidth;
+          this.canvas.height = window.innerHeight;
+          this.ctx.viewport(0, 0, this.canvas.width, this.canvas.height);
         },
-        generatePadovan: (n) => {
-          let sequence = [1, 1, 1];
-          for (let i = 3; i <= n; i++) sequence.push(sequence[i - 2] + sequence[i - 3]);
-          return sequence[n];
-        },
-        generatePell: (n) => {
-          let sequence = [0, 1];
-          for (let i = 2; i <= n; i++) sequence.push(2 * sequence[i - 1] + sequence[i - 2]);
-          return sequence[n];
+        render: function() {
+          if(!this.ctx) return;
+          this.ctx.uniform2f(this.ctx.getUniformLocation(this.program, "u_resolution"), this.canvas.width, this.canvas.height);
+          this.ctx.uniform1f(this.ctx.getUniformLocation(this.program, "u_time"), (Date.now() - this.startTime) / 1000.0);
+          this.ctx.uniform2f(this.ctx.getUniformLocation(this.program, "u_mouse"), System.state.mouseX, System.state.mouseY);
+          
+          this.ctx.drawArrays(this.ctx.TRIANGLES, 0, 6);
+          requestAnimationFrame(() => this.render());
         }
       },
 
-      // Web Audio API Synthesis Sub-engine mapping frequencies onto sequences contextually
+      /* ==========================================================
+         WEBAUDIO API: GENERATIVE SYNTHESIZER ENGINE
+         ========================================================== */
       audio: {
-        ctx: null,
-        masterGain: null,
-        
-        initialize: function() {
-          if (OMathKernel.state.audioContextActive) return true;
-          try {
-            const AudioContextClass = window.AudioContext || window.webkitAudioContext;
-            this.ctx = new AudioContextClass();
-            this.masterGain = this.ctx.createGain();
-            this.masterGain.gain.setValueAtTime(0.12, this.ctx.currentTime);
-            this.masterGain.connect(this.ctx.destination);
-            
-            // Pipe secondary lowpass filter configurations for high frequency acoustics compression
-            const filter = this.ctx.createBiquadFilter();
-            filter.type = 'lowpass';
-            filter.frequency.setValueAtTime(1400, this.ctx.currentTime);
-            this.masterGain.connect(filter);
-            
-            OMathKernel.state.audioContextActive = true;
-            OMathKernel.terminal.log('WebAudio Engine online. Synthesizer node array connected.', 'success');
-            return true;
-          } catch(e) {
-            OMathKernel.terminal.log('WebAudio initialization faulted. Spatial mapping offline.', 'error');
-            return false;
-          }
-        },
+        ctx: null, master: null, analyser: null, dataArray: null,
+        init: function() {
+          const AudioContext = window.AudioContext || window.webkitAudioContext;
+          if(!AudioContext) return;
+          this.ctx = new AudioContext();
+          this.master = this.ctx.createGain();
+          this.master.gain.value = 0.2;
+          
+          this.analyser = this.ctx.createAnalyser();
+          this.analyser.fftSize = 256;
+          this.dataArray = new Uint8Array(this.analyser.frequencyBinCount);
 
-        triggerSynthesisPing: function(stepValue = 5) {
-          if (!this.ctx) return;
-          // Dynamically compute note frequencies using Padovan sequences bounds calculations
-          const calculatedPadovanVal = OMathKernel.math.generatePadovan(stepValue);
-          const rootBaseFreq = 220; 
-          const frequencyTarget = rootBaseFreq + (calculatedPadovanVal * 12);
+          this.master.connect(this.analyser);
+          this.analyser.connect(this.ctx.destination);
+          System.log("WebAudio Context Bound.", "log-line ok");
+        },
+        ping: function(baseFreq = 440) {
+          if(!this.ctx) this.init();
+          if(this.ctx.state === 'suspended') this.ctx.resume();
 
           const osc = this.ctx.createOscillator();
-          const gainNode = this.ctx.createGain();
+          const filter = this.ctx.createBiquadFilter();
+          const env = this.ctx.createGain();
+
+          osc.type = 'sawtooth';
+          // Modulate frequency based on mouse X mapping to mathematical interval
+          osc.frequency.value = baseFreq + (System.state.mouseX / window.innerWidth) * 200;
           
-          osc.type = 'sine';
-          osc.frequency.setValueAtTime(frequencyTarget, this.ctx.currentTime);
-          
-          gainNode.gain.setValueAtTime(0.15, this.ctx.currentTime);
-          // Decelerate audio signal exponential envelope curve based onto Lucas metrics calculations
-          gainNode.gain.exponentialRampToValueAtTime(0.0001, this.ctx.currentTime + 0.35);
-          
-          osc.connect(gainNode);
-          gainNode.connect(this.masterGain);
-          
+          filter.type = 'lowpass';
+          filter.frequency.setValueAtTime(5000, this.ctx.currentTime);
+          filter.frequency.exponentialRampToValueAtTime(100, this.ctx.currentTime + 0.5);
+
+          env.gain.setValueAtTime(0, this.ctx.currentTime);
+          env.gain.linearRampToValueAtTime(1, this.ctx.currentTime + 0.02);
+          env.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + 0.5);
+
+          osc.connect(filter);
+          filter.connect(env);
+          env.connect(this.master);
+
           osc.start();
-          osc.stop(this.ctx.currentTime + 0.36);
+          osc.stop(this.ctx.currentTime + 0.5);
+          System.log(`Audio Thread: Synth dispatched at ${Math.round(osc.frequency.value)}Hz`);
         }
       },
 
-      // Procedural Vector Graphics Drawing Pipeline Context Maps
-      canvas: {
-        animationFrameId: null,
-        
-        bootProceduralDrawing: function(canvasElement) {
-          if (!canvasElement) return;
-          const context = canvasElement.getContext('2d');
-          let executionTicks = 0;
-
-          const renderLoop = () => {
-            if (!document.getElementById('procedural-spiral-canvas-target')) {
-              cancelAnimationFrame(this.animationFrameId);
-              return;
-            }
+      /* ==========================================================
+         UI KINEMATICS & DATA VISUALIZATION
+         ========================================================== */
+      ui: {
+        card: null, ctx: null, canvas: null,
+        init: function() {
+          this.card = document.getElementById('k-card');
+          this.canvas = document.getElementById('data-canvas');
+          this.ctx = this.canvas.getContext('2d');
+          
+          // 6-Axis Tilt Mechanics
+          window.addEventListener('mousemove', (e) => {
+            System.state.mouseX = e.clientX;
+            System.state.mouseY = e.clientY;
             
-            // Adapt canvas boundaries dynamically to parent width parameters
-            if (canvasElement.width !== canvasElement.clientWidth || canvasElement.height !== canvasElement.clientHeight) {
-              canvasElement.width = canvasElement.clientWidth;
-              canvasElement.height = canvasElement.clientHeight;
-            }
+            const x = (e.clientX / window.innerWidth - 0.5) * 2;
+            const y = (e.clientY / window.innerHeight - 0.5) * 2;
+            
+            System.state.tiltX = y * -20; // Reverse Y for natural pitch
+            System.state.tiltY = x * 20;  // Natural yaw
 
-            context.clearRect(0, 0, canvasElement.width, canvasElement.height);
-            executionTicks++;
-
-            const centerCoordinateX = canvasElement.width / 2;
-            const centerCoordinateY = canvasElement.height / 2;
-            const absoluteScale = OMathKernel.state.globalScalar;
-
-            // Render procedural coordinate paths utilizing computed vector distribution calculations
-            context.strokeStyle = 'rgba(0, 242, 254, 0.28)';
-            context.lineWidth = 1;
-            context.beginPath();
-
-            for (let angle = 0; angle < 360 * 3; angle += 4) {
-              const radianConversion = (angle * Math.PI) / 180;
-              // Fibonacci structural progression approximation expansion formula
-              const structuralRadius = Math.pow(1.12, angle * 0.1) * 3 * absoluteScale;
-              const vectorX = centerCoordinateX + Math.cos(radianConversion + (executionTicks * 0.006)) * structuralRadius;
-              const vectorY = centerCoordinateY + Math.sin(radianConversion + (executionTicks * 0.006)) * structuralRadius;
-
-              if (angle === 0) context.moveTo(vectorX, vectorY);
-              else context.lineTo(vectorX, vectorY);
-            }
-            context.stroke();
-
-            // Overlay algorithmic matrix coordinate tracking intersection nodes
-            for (let i = 2; i < 11; i++) {
-              const computedFibRadius = OMathKernel.math.generateFibonacci(i) * 3 * absoluteScale;
-              context.strokeStyle = 'rgba(99, 102, 241, 0.08)';
-              context.beginPath();
-              context.arc(centerCoordinateX, centerCoordinateY, computedFibRadius, 0, Math.PI * 2);
-              context.stroke();
-            }
-
-            this.animationFrameId = requestAnimationFrame(renderLoop);
-          };
-
-          this.animationFrameId = requestAnimationFrame(renderLoop);
-        }
-      },
-
-      // Terminal Core Output Stream Parser Mechanics Configuration
-      terminal: {
-        log: function(messageText, textClassificationClass = 'system') {
-          const buffer = document.getElementById('terminal-log-buffer');
-          if (!buffer) return;
-          
-          const rowNode = document.createElement('div');
-          rowNode.className = `terminal-row-${textClassificationClass}`;
-          rowNode.innerText = `[${new Date().toLocaleTimeString()}] >> ${messageText}`;
-          buffer.appendChild(rowNode);
-          
-          // Constrain log buffers scale bounds tracking layout constraints
-          if (buffer.childNodes.length > 60) {
-            buffer.removeChild(buffer.firstChild);
-          }
-          buffer.scrollTop = buffer.scrollHeight;
-          OMathKernel.state.activeLogCount++;
-        },
-
-        executeCommand: function(rawCommandInputString) {
-          const normalizedInput = rawCommandInputString.trim().toLowerCase();
-          if (!normalizedInput) return;
-
-          this.log(`exec_kernel_script: "${rawCommandInputString}"`, 'system');
-          const commandArgumentsArray = normalizedInput.split(' ');
-          const rootCommand = commandArgumentsArray[0];
-
-          switch (rootCommand) {
-            case 'help':
-              this.log('Available System Operations Framework Operations:', 'success');
-              this.log('  route [dashboard/vectors/kinematics] : Force dynamic viewport redirection matrix path', 'system');
-              this.log('  scalar [0.5 - 2.0]                   : Mutate design constants globally in execution pipelines', 'system');
-              this.log('  clear                                : Flush terminal screen lines buffer', 'system');
-              this.log('  telemetry                            : Print structural state constants dump report', 'system');
-              break;
-            case 'clear':
-              const buffer = document.getElementById('terminal-log-buffer');
-              if (buffer) buffer.innerHTML = '';
-              break;
-            case 'route':
-              const targetRoutePath = commandArgumentsArray[1];
-              if (['dashboard', 'vectors', 'kinematics'].includes(targetRoutePath)) {
-                window.location.hash = targetRoutePath;
-                this.log(`Router transformation triggered successfully to layout: /${targetRoutePath}`, 'success');
-              } else {
-                this.log('Router fault: Specified design route architecture node not within definitions.', 'error');
-              }
-              break;
-            case 'scalar':
-              const computedScalarNumericalVal = parseFloat(commandArgumentsArray[1]);
-              if (!isNaN(computedScalarNumericalVal) && computedScalarNumericalVal >= 0.5 && computedScalarNumericalVal <= 2.0) {
-                document.getElementById('global-matrix-scalar-input').value = computedScalarNumericalVal;
-                document.getElementById('global-matrix-scalar-input').dispatchEvent(new Event('input'));
-                this.log(`Matrix conversion variables mutated securely to target: ${computedScalarNumericalVal}`, 'success');
-              } else {
-                this.log('Scalar pipeline mutation input bounds exceeded. Range constraint: [0.5 - 2.0]', 'error');
-              }
-              break;
-            case 'telemetry':
-              this.log(`=== RUNTIME ENGINE STATUS VERIFICATION REGISTER REPORT ===`, 'success');
-              this.log(`  - Root Route Address: /${OMathKernel.state.currentRoute}`, 'system');
-              this.log(`  - Active Global Multiplier: ${OMathKernel.state.globalScalar.toFixed(2)}x`, 'system');
-              this.log(`  - Graphics Core Operational Frequency: ${OMathKernel.state.fpsRate} HZ`, 'system');
-              this.log(`  - Cumulative Log Interruptions: ${OMathKernel.state.activeLogCount}`, 'system');
-              this.log(`  - Spatial WebAudio Connection Hooked: ${OMathKernel.state.audioContextActive}`, 'system');
-              break;
-            default:
-              this.log(`Kernel structural script execution interrupt: Command instruction unverified: "${rootCommand}"`, 'error');
-              break;
-          }
-        }
-      },
-
-      // Core Interactive 3D Parallax Coordinate Transform Engine 
-      interactivity3D: {
-        calculateParallaxTilt: function(event) {
-          const structuralCardNode = event.currentTarget;
-          const spatialBoundingBox = structuralCardNode.getBoundingClientRect();
-          const cursorPositionX = event.clientX - spatialBoundingBox.left;
-          const cursorPositionY = event.clientY - spatialBoundingBox.top;
-          
-          const relativePercentageX = cursorPositionX / spatialBoundingBox.width;
-          const relativePercentageY = cursorPositionY / spatialBoundingBox.height;
-          
-          // Map rotational metrics to custom bounds limits
-          const transformationAngleX = ((relativePercentageY - 0.5) * -22).toFixed(2);
-          const transformationAngleY = ((relativePercentageX - 0.5) * 22).toFixed(2);
-
-          structuralCardNode.style.transform = `rotateX(${transformationAngleX}deg) rotateY(${transformationAngleY}deg) scale3d(1.02, 1.02, 1.02)`;
-          structuralCardNode.style.setProperty('--mouse-x', `${relativePercentageX * 100}%`);
-          structuralCardNode.style.setProperty('--mouse-y', `${relativePercentageY * 100}%`);
-          
-          // Map real-time thread stress metrics onto registers display logic
-          OMathKernel.registers.injectVirtualRegisterLine('REG_MATRIX_TILT_X', `${transformationAngleX}deg`);
-          OMathKernel.registers.injectVirtualRegisterLine('REG_MATRIX_TILT_Y', `${transformationAngleY}deg`);
-        },
-
-        clearParallaxTilt: function(event) {
-          const structuralCardNode = event.currentTarget;
-          structuralCardNode.style.transform = `rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
-          OMathKernel.registers.injectVirtualRegisterLine('REG_MATRIX_TILT_X', '0.00deg');
-          OMathKernel.registers.injectVirtualRegisterLine('REG_MATRIX_TILT_Y', '0.00deg');
-        }
-      },
-
-      // Virtual System Data Registers Monitoring Elements
-      registers: {
-        injectVirtualRegisterLine: function(registerIdentifierKey, registerNumericalDataString) {
-          const registerPoolContainerNode = document.getElementById('active-registers-pool');
-          if (!registerPoolContainerNode) return;
-
-          let targetRowElement = document.getElementById(`reg-key-row-${registerIdentifierKey}`);
-          if (!targetRowElement) {
-            targetRowElement = document.createElement('div');
-            targetRowElement.id = `reg-key-row-${registerIdentifierKey}`;
-            targetRowElement.style.cssText = 'display:flex; justify-content:space-between; font-family:inherit; border-bottom:1px dashed rgba(255,255,255,0.01); padding:2px 0;';
-            registerPoolContainerNode.appendChild(targetRowElement);
-          }
-          targetRowElement.innerHTML = `<span style="color:var(--text-low-contrast);">${registerIdentifierKey}</span><span style="color:var(--glow-matrix-cyan); font-weight:bold;">${registerNumericalDataString}</span>`;
-        }
-      },
-
-      // Deterministic Finite Lifecycle View Router Engine Configuration
-      router: {
-        viewHooksMap: {
-          dashboard: {
-            onMount: (viewDOMContainerNode) => {
-              OMathKernel.terminal.log('Mounting Module 01: Architecture Specification Matrix Dashboard...', 'system');
-              viewDOMContainerNode.querySelectorAll('.dynamic-3d-tilt-node').forEach(cardNode => {
-                cardNode.addEventListener('mousemove', OMathKernel.interactivity3D.calculateParallaxTilt);
-                cardNode.addEventListener('mouseleave', OMathKernel.interactivity3D.clearParallaxTilt);
-              });
-
-              viewDOMContainerNode.querySelectorAll('.trigger-audio-ping').forEach(btn => {
-                btn.addEventListener('click', () => OMathKernel.audio.triggerSynthesisPing(8));
-              });
-
-              // Trigger transition properties for layout elements metrics animations
-              requestAnimationFrame(() => {
-                viewDOMContainerNode.querySelectorAll('.metric-rail-fill').forEach(fillNode => {
-                  fillNode.style.width = fillNode.getAttribute('data-gauge-width');
-                });
-              });
-            },
-            onUnmount: () => {
-              OMathKernel.terminal.log('Unmounting Module 01 Dashboard elements, sanitizing listeners.', 'system');
-            }
-          },
-          vectors: {
-            onMount: (viewDOMContainerNode) => {
-              OMathKernel.terminal.log('Mounting Module 02: Initializing Dense Object Vector Arrays Pipeline...', 'system');
-              
-              const drawingCanvasElementTarget = viewDOMContainerNode.querySelector('#procedural-spiral-canvas-target');
-              OMathKernel.canvas.bootProceduralDrawing(drawingCanvasElementTarget);
-
-              const designNodesGridHookNode = viewDOMContainerNode.querySelector('#dense-vector-nodes-hook');
-              // Procedurally instantiate a large array grid structure to test layout compilation capacities
-              for (let i = 0; i < 32; i++) {
-                const vectorNodeBox = document.createElement('div');
-                vectorNodeBox.style.cssText = `
-                  background: var(--color-surface-solid); border: 1px solid var(--color-border-hardened);
-                  padding: var(--fib-13); font-size: var(--pad-xs); border-radius: var(--fib-3);
-                  text-align: center; cursor: pointer; transform-style: preserve-3d;
-                  transition: all var(--lucas-ms-11) var(--ease-lucas-snap);
-                `;
-                // Calculate dynamic Tribonacci constants parameters metrics allocations
-                const analyticalMetricVal = OMathKernel.math.generateTribonacci((i % 6) + 3);
-                vectorNodeBox.innerHTML = `<div style="color:var(--text-low-contrast)">VEC_NODE_${i}</div><div style="color:var(--glow-matrix-cyan); font-weight:bold; margin-top:4px;">T_VAL: ${analyticalMetricVal}</div>`;
-                
-                vectorNodeBox.addEventListener('mouseenter', () => {
-                  OMathKernel.audio.triggerSynthesisPing((i % 5) + 3);
-                  vectorNodeBox.style.borderColor = 'var(--glow-matrix-cyan)';
-                  vectorNodeBox.style.background = 'var(--color-surface-elevated)';
-                  vectorNodeBox.style.transform = 'translateZ(20px) scale3d(1.06, 1.06, 1.06)';
-                  OMathKernel.registers.injectVirtualRegisterLine('REG_LAST_HOVER_NODE', `0x${i.toString(16).toUpperCase()}`);
-                });
-
-                vectorNodeBox.addEventListener('mouseleave', () => {
-                  vectorNodeBox.style.borderColor = 'var(--color-border-hardened)';
-                  vectorNodeBox.style.background = 'var(--color-surface-solid)';
-                  vectorNodeBox.style.transform = 'translateZ(0px) scale3d(1, 1, 1)';
-                });
-
-                designNodesGridHookNode.appendChild(vectorNodeBox);
-              }
-            },
-            onUnmount: () => {
-              OMathKernel.terminal.log('Unmounting Module 02 Vector Grid, closing animation loops.', 'system');
-              if (OMathKernel.canvas.animationFrameId) {
-                cancelAnimationFrame(OMathKernel.canvas.animationFrameId);
-              }
-            }
-          },
-          kinematics: {
-            onMount: (viewDOMContainerNode) => {
-              OMathKernel.terminal.log('Mounting Module 03: Velocity Curve Engine Framework View...', 'system');
-              
-              const transformationDispatchBtn = viewDOMContainerNode.querySelector('#fire-kinematics-cycle-btn');
-              const kinematicsStatusLabelNode = viewDOMContainerNode.querySelector('#kinematics-state-readout');
-              const kinematicRunnerBlocksArray = viewDOMContainerNode.querySelectorAll('.kinematic-runner-block');
-              
-              let dynamicOscillationStateValue = false;
-
-              transformationDispatchBtn.addEventListener('click', () => {
-                OMathKernel.audio.triggerSynthesisPing(10);
-                dynamicOscillationStateValue = !dynamicOscillationStateValue;
-                
-                kinematicsStatusLabelNode.innerText = dynamicOscillationStateValue ? 'STATUS // PIPELINE_DISPATCH' : 'STATUS // STEADY_STATE';
-                kinematicsStatusLabelNode.style.color = dynamicOscillationStateValue ? 'var(--glow-matrix-cyan)' : 'var(--glow-matrix-crimson)';
-
-                kinematicRunnerBlocksArray.forEach(runnerBlock => {
-                  runnerBlock.style.left = dynamicOscillationStateValue ? 'calc(100% - var(--fib-55))' : '0px';
-                });
-
-                OMathKernel.terminal.log(`Dispatched kinematic coordinate transition payload array vector transformations. State direction: ${dynamicOscillationStateValue}`, 'success');
-              });
-            },
-            onUnmount: () => {
-              OMathKernel.terminal.log('Unmounting Module 03 Motion Interface workspace configurations.', 'system');
-            }
-          }
-        },
-
-        dispatchSpatialRouterPipeline: async function() {
-          const highPrecisionBenchmarkStartTime = performance.now();
-          const targetLocationHashString = window.location.hash.replace('#', '');
-          const verifiedActiveRouteToken = targetLocationHashString || 'dashboard';
-
-          const mountPointDOMTargetNode = document.getElementById('router-view-mount');
-          if (!mountPointDOMTargetNode) return;
-
-          // Process memory cleanup on previously active views execution chains
-          const previouslyActiveRouteToken = OMathKernel.state.currentRoute;
-          if (previouslyActiveRouteToken && this.viewHooksMap[previouslyActiveRouteToken]?.onUnmount) {
-            this.viewHooksMap[previouslyActiveRouteToken].onUnmount();
-          }
-
-          // Update navigation menu active structural indicator bindings
-          document.querySelectorAll('.nav-pipeline-item').forEach(menuItemNode => {
-            if (menuItemNode.getAttribute('data-route') === verifiedActiveRouteToken) {
-              menuItemNode.classList.add('active-route-node');
-            } else {
-              menuItemNode.classList.remove('active-route-node');
-            }
+            this.card.style.transform = `rotateX(${System.state.tiltX}deg) rotateY(${System.state.tiltY}deg)`;
+            document.getElementById('hud-tilt').innerText = `${System.state.tiltX.toFixed(1)}, ${System.state.tiltY.toFixed(1)}`;
           });
 
-          // Render operational synthetic thread preloader element
-          mountPointDOMTargetNode.innerHTML = '<div class="pipeline-core-loader"></div>';
-          OMathKernel.state.currentRoute = verifiedActiveRouteToken;
-          
-          OMathKernel.registers.injectVirtualRegisterLine('REG_ACTIVE_ROUTE_PATH', `/${verifiedActiveRouteToken}`);
-
-          // Enforce a strict programmatic artificial pipeline delay (Lucas Sequence: 180ms Frame)
-          await new Promise(resolveCallback => setTimeout(resolveCallback, 180));
-
-          const structuralTemplateBlueprintNode = document.getElementById(`view-${verifiedActiveRouteToken}`);
-          if (!structuralTemplateBlueprintNode) {
-            mountPointDOMTargetNode.innerHTML = `<div style="color:var(--glow-matrix-crimson); padding:var(--fib-34);">Router Pipeline Fault: Structural blueprint data node payload lost [${verifiedActiveRouteToken}]</div>`;
+          this.drawOscilloscope();
+        },
+        drawOscilloscope: function() {
+          if(!System.audio.analyser) {
+            requestAnimationFrame(() => this.drawOscilloscope());
             return;
           }
-
-          const architecturalCloneInstance = structuralTemplateBlueprintNode.content.cloneNode(true);
-          mountPointDOMTargetNode.innerHTML = '';
-          mountPointDOMTargetNode.appendChild(architecturalCloneInstance);
-
-          const innerApparatusEnvelopeWrapperNode = mountPointDOMTargetNode.querySelector('.view-apparatus-envelope');
-
-          // Trigger view contextual orchestration mounting functions
-          if (this.viewHooksMap[verifiedActiveRouteToken]?.onMount) {
-            this.viewHooksMap[verifiedActiveRouteToken].onMount(innerApparatusEnvelopeWrapperNode);
+          
+          this.canvas.width = this.canvas.clientWidth;
+          this.canvas.height = this.canvas.clientHeight;
+          
+          System.audio.analyser.getByteTimeDomainData(System.audio.dataArray);
+          this.ctx.fillStyle = 'rgba(0, 0, 0, 0.2)';
+          this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+          
+          this.ctx.lineWidth = 2;
+          this.ctx.strokeStyle = '#00f0ff';
+          this.ctx.beginPath();
+          
+          const sliceWidth = this.canvas.width * 1.0 / System.audio.analyser.frequencyBinCount;
+          let x = 0;
+          for(let i = 0; i < System.audio.analyser.frequencyBinCount; i++) {
+            const v = System.audio.dataArray[i] / 128.0;
+            const y = v * this.canvas.height / 2;
+            if(i === 0) this.ctx.moveTo(x, y);
+            else this.ctx.lineTo(x, y);
+            x += sliceWidth;
           }
-
-          // Execute entry transformation vectors cleanly utilizing the next rendering iteration sequence loop
-          requestAnimationFrame(() => {
-            if (innerApparatusEnvelopeWrapperNode) {
-              innerApparatusEnvelopeWrapperNode.classList.add('pipeline-mounted');
-            }
-            const highPrecisionBenchmarkEndTime = performance.now();
-            const absoluteDeltaDurationCalculation = parseFloat(highPrecisionBenchmarkEndTime - highPrecisionBenchmarkStartTime).toFixed(2);
-            document.getElementById('telemetry-mount-speed').innerText = `${absoluteDeltaDurationCalculation} MS`;
-            
-            OMathKernel.registers.injectVirtualRegisterLine('REG_LAST_MOUNT_SPEED', `${absoluteDeltaDurationCalculation}ms`);
-          });
+          this.ctx.lineTo(this.canvas.width, this.canvas.height / 2);
+          this.ctx.stroke();
+          
+          requestAnimationFrame(() => this.drawOscilloscope());
         }
       },
 
-      // Base System Initialization Orchestration Sequence Framework
-      bootstrapSystemRuntime: function() {
-        this.terminal.log('Bootstrapping system core orchestration framework modules...', 'system');
-
-        // Initialize active timeline tracking loop operations
-        setInterval(() => {
-          const formattingClockTimeString = new Date().toTimeString().split(' ')[0];
-          document.getElementById('system-wall-clock').innerText = `SYS_CLOCK: ${formattingClockTimeString}`;
-        }, 1000);
-
-        // Bind high precision frame-rate performance monitoring loops
-        let evaluatedFramesCounter = 0, benchmarkLastCheckTime = performance.now();
-        const executePerformanceTelemetryLoop = () => {
-          evaluatedFramesCounter++;
-          const loopExecutionCurrentTime = performance.now();
-          if (loopExecutionCurrentTime >= benchmarkLastCheckTime + 1000) {
-            const calculatedSystemFpsHZ = Math.round((evaluatedFramesCounter * 1000) / (loopExecutionCurrentTime - benchmarkLastCheckTime));
-            document.getElementById('telemetry-fps').innerText = `${calculatedSystemFpsHZ} HZ`;
-            OMathKernel.state.fpsRate = calculatedSystemFpsHZ;
-            evaluatedFramesCounter = 0;
-            benchmarkLastCheckTime = loopExecutionCurrentTime;
-            
-            // Auto update virtual platform monitoring metrics register sheets
-            OMathKernel.registers.injectVirtualRegisterLine('REG_GPU_DISPATCH_FPS', `${calculatedSystemFpsHZ}Hz`);
-            OMathKernel.registers.injectVirtualRegisterLine('REG_RAM_LOG_STREAMS', OMathKernel.state.activeLogCount.toString());
-          }
-          requestAnimationFrame(executePerformanceTelemetryLoop);
-        };
-        requestAnimationFrame(executePerformanceTelemetryLoop);
-
-        // Bind global system design scalar alteration range input mechanisms
-        const scalarSliderInputElement = document.getElementById('global-matrix-scalar-input');
-        const scalarFeedbackDisplayElement = document.getElementById('scalar-feedback-value');
-        
-        scalarSliderInputElement.addEventListener('input', (event) => {
-          const computedSliderTargetValue = event.target.value;
-          document.documentElement.style.setProperty('--math-scalar', computedSliderTargetValue);
-          scalarFeedbackDisplayElement.innerText = `${parseFloat(computedSliderTargetValue).toFixed(2)}x`;
-          OMathKernel.state.globalScalar = parseFloat(computedSliderTargetValue);
+      /* ==========================================================
+         INLINE WEB WORKER (MULTI-THREADING)
+         ========================================================== */
+      worker: {
+        instance: null,
+        init: function() {
+          // Construct worker from blob to keep it single-file
+          const code = `
+            self.onmessage = function(e) {
+              // Heavy mathematical calculation simulation
+              let a = 1, b = 1, c = 0;
+              for(let i = 0; i < e.data.cycles; i++) {
+                c = a + b; a = b; b = c;
+              }
+              self.postMessage({ result: c, timestamp: Date.now() });
+            }
+          `;
+          const blob = new Blob([code], {type: "application/javascript"});
+          this.instance = new Worker(URL.createObjectURL(blob));
           
-          OMathKernel.registers.injectVirtualRegisterLine('REG_SYS_GLOBAL_SCALAR', `${parseFloat(computedSliderTargetValue).toFixed(2)}x`);
-        });
+          this.instance.onmessage = (e) => {
+            document.getElementById('hud-worker').innerText = `TICK_${e.data.timestamp.toString().slice(-4)}`;
+          };
 
-        // Initialize user interaction bindings for WebAudio context activation
-        document.getElementById('audio-bootstrap-btn').addEventListener('click', (event) => {
-          const activationSuccessFlag = OMathKernel.audio.initialize();
-          if (activationSuccessFlag) {
-            event.target.innerText = 'ONLINE';
-            event.target.style.borderColor = 'var(--glow-matrix-emerald)';
-            event.target.style.color = 'var(--glow-matrix-emerald)';
-            OMathKernel.audio.triggerSynthesisPing(6);
+          // Ping worker continuously
+          setInterval(() => {
+            this.instance.postMessage({ cycles: 10000000 }); // Heavy load
+          }, 500);
+          System.log("Inline Data Worker Thread Mounted.", "log-line ok");
+        }
+      },
+
+      // Utility to simulate interaction
+      triggerQuantumPulse: function() {
+        this.audio.ping(100);
+        setTimeout(() => this.audio.ping(150), 100);
+        setTimeout(() => this.audio.ping(225), 200);
+        
+        const card = document.getElementById('k-card');
+        card.style.transition = 'transform 100ms cubic-bezier(0.19, 1, 0.22, 1)';
+        card.style.transform = `rotateX(${System.state.tiltX}deg) rotateY(${System.state.tiltY}deg) translateZ(100px) scale(1.1)`;
+        
+        setTimeout(() => {
+          card.style.transition = 'transform 470ms cubic-bezier(0.34, 1.56, 0.64, 1)'; // Spring rebound
+          card.style.transform = `rotateX(${System.state.tiltX}deg) rotateY(${System.state.tiltY}deg) translateZ(0px) scale(1)`;
+        }, 100);
+      },
+
+      // Master boot sequence
+      boot: function() {
+        this.gl.init();
+        this.ui.init();
+        this.worker.init();
+        
+        // FPS loop
+        let frames = 0, lastTime = Date.now();
+        const loop = () => {
+          frames++;
+          const now = Date.now();
+          if(now - lastTime >= 1000) {
+            document.getElementById('hud-fps').innerText = `${frames} FPS`;
+            frames = 0;
+            lastTime = now;
           }
-        });
-
-        // Register event listener hooks on interactive retro console input element lines
-        const consoleInputElement = document.getElementById('kernel-command-line-input');
-        consoleInputElement.addEventListener('keydown', (event) => {
-          if (event.key === 'Enter') {
-            const extractedCommandPayloadString = consoleInputElement.value;
-            OMathKernel.terminal.executeCommand(extractedCommandPayloadString);
-            consoleInputElement.value = '';
-          }
-        });
-
-        // Monitor cursor coordinate tracking to simulate line buffer states
-        consoleInputElement.addEventListener('input', () => {
-          const inputStringLength = consoleInputElement.value.length;
-          document.getElementById('terminal-cursor-pos').innerText = `LINE: 0001 COL: ${String(inputStringLength + 1).padStart(4, '0')}`;
-        });
-
-        // Bind hash change monitoring routers to handle deep navigation executions cleanly
-        window.addEventListener('hashchange', () => this.router.dispatchSpatialRouterPipeline());
-
-        // Launch initial routing path sequences setup
-        this.router.dispatchSpatialRouterPipeline();
-        this.terminal.log('System core initialized and running in hardened 3D sandbox context.', 'success');
+          
+          const ms = now % 1000;
+          document.getElementById('sys-clock').innerText = new Date().toTimeString().split(' ')[0] + `:${ms.toString().padStart(3,'0')}`;
+          requestAnimationFrame(loop);
+        };
+        loop();
       }
     };
 
-    // Initialize application execution loops upon structural assets confirmation
-    document.addEventListener('DOMContentLoaded', () => {
-      OMathKernel.bootstrapSystemRuntime();
-    });
+    // Ignite the system when DOM is ready
+    window.onload = () => System.boot();
   </script>
 </body>
 </html>
