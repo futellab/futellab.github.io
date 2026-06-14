@@ -3,532 +3,494 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>0math v2 — Multi-Sequence Design System Lab</title>
+  <title>0math v2 — Hardened Lab Environment</title>
   <style>
     /* ==========================================================================
-       THE FIVE SEQUENCES — CORE SYSTEM VARIABLES
+       CORE MATHEMATICAL MATRIX CONFIGURATION (:root)
        ========================================================================== */
     :root {
-      /* Layer 1 — Fibonacci: Micro-Spacing */
-      --fib-1: 1px;   --fib-2: 2px;   --fib-3: 3px;   --fib-5: 5px;
-      --fib-8: 8px;   --fib-13: 13px; --fib-21: 21px; --fib-34: 34px;
-      --fib-55: 55px; --fib-89: 89px; --fib-144: 144px; --fib-233: 233px;
+      /* Base Scalar Multiplier (Altered via Live Play Engine) */
+      --math-scalar: 1;
 
-      /* Layer 2 — Lucas: Animation Timing (seconds based on system numbers) */
-      --lucas-delay-1: 0.02s;
-      --lucas-delay-2: 0.01s; /* Shortest/Snappiest */
-      --lucas-delay-3: 0.03s;
-      --lucas-delay-4: 0.04s;
-      --lucas-delay-7: 0.07s;
-      --lucas-delay-11: 0.11s; /* GSAP/Stagger sweet spot */
-      --lucas-delay-18: 0.18s;
-      --lucas-delay-29: 0.29s;
-      --lucas-delay-47: 0.47s; /* Hero Entrance */
-      --lucas-delay-76: 0.76s; /* Page Transition */
+      /* Layer 1 — Fibonacci Matrix: Micro-Spacing (Base Scaled) */
+      --fib-1: calc(1px * var(--math-scalar));
+      --fib-2: calc(2px * var(--math-scalar));
+      --fib-3: calc(3px * var(--math-scalar));
+      --fib-5: calc(5px * var(--math-scalar));
+      --fib-8: calc(8px * var(--math-scalar));
+      --fib-13: calc(13px * var(--math-scalar));
+      --fib-21: calc(21px * var(--math-scalar));
+      --fib-34: calc(34px * var(--math-scalar));
+      --fib-55: calc(55px * var(--math-scalar));
+      --fib-89: calc(89px * var(--math-scalar));
+      --fib-144: calc(144px * var(--math-scalar));
 
-      /* Layer 3 — Tribonacci: Component Sizing */
-      --trib-1: 1px;    --trib-2: 2px;    --trib-4: 4px;    --trib-7: 7px;
-      --trib-13: 13px;  --trib-24: 24px;  --trib-44: 44px;  --trib-81: 81px;
-      --trib-149: 149px; --trib-274: 274px;
+      /* Layer 2 — Lucas Matrix: High Fidelity Temporal Durations */
+      --lucas-ms-1: 10ms;   --lucas-ms-2: 20ms;   --lucas-ms-3: 30ms;
+      --lucas-ms-4: 40ms;   --lucas-ms-7: 70ms;   --lucas-ms-11: 110ms;
+      --lucas-ms-18: 180ms; --lucas-ms-29: 290ms; --lucas-ms-47: 470ms;
+      --lucas-ms-76: 760ms;
 
-      /* Layer 4 — Padovan: Typography Scale */
+      /* Layer 3 — Tribonacci Matrix: Structural Component Boundary Thresholds */
+      --trib-1: 1px;        --trib-2: 2px;        --trib-4: 4px;
+      --trib-7: 7px;        --trib-13: 13px;      --trib-24: 24px;
+      --trib-44: 44px;      --trib-81: 81px;      --trib-149: 149px;
+      --trib-274: 274px;    --trib-504: 504px;
+
+      /* Layer 4 — Padovan Matrix: Typographic Micro-Scale */
       --pad-xs: 9px;   --pad-sm: 12px;  --pad-base: 16px; --pad-md: 21px;
       --pad-lg: 28px;  --pad-xl: 37px;  --pad-2xl: 49px;  --pad-3xl: 65px;
-
-      /* Padovan Letter Spacing */
+      
       --ls-tight: -0.02em; --ls-normal: 0em; --ls-wide: 0.04em;
       --ls-wider: 0.07em;  --ls-widest: 0.12em;
 
-      /* Layer 5 — Pell: Macro Layout / Viewport Scales */
+      /* Layer 5 — Pell Matrix: Macro Viewport System Sizing */
       --pell-5: 5vh;    --pell-12: 12vh;   --pell-29: 29vh;
       --pell-70: 70vh;  --pell-100: 100vh;
-      --pell-px-12: 12px;   --pell-px-29: 29px;   --pell-px-70: 70px;
       --pell-px-169: 169px; --pell-px-408: 408px;
 
-      /* Lab Dark Theme Palette */
-      --color-bg: #09090b;
-      --color-surface: #141419;
-      --color-surface-elevated: #1d1d26;
-      --color-border: #272730;
-      --color-primary: #6366f1;
-      --color-accent: #10b981;
-      --color-text: #f4f4f7;
-      --color-muted: #a1a1aa;
+      /* Visual Aesthetics Spec Map */
+      --bg-dark-absolute: #050507;
+      --bg-surface-flat: #0c0c10;
+      --bg-surface-raised: #14141a;
+      --border-hardened: #1f1f29;
+      --border-interactive: #3b3b4f;
+      
+      --glow-primary: #5850ec;
+      --glow-accent: #059669;
+      --text-high-contrast: #ffffff;
+      --text-mid-contrast: #9ca3af;
+      --text-low-contrast: #4b5563;
     }
 
     /* ==========================================================================
-       BASE RESET & TYPOGRAPHY RULES (PADOVAN MAPPED)
+       CSS RESET & BASE LAB ARCHITECTURE
        ========================================================================== */
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      background-color: var(--color-bg);
-      color: var(--color-text);
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg-dark-absolute);
+      color: var(--text-mid-contrast);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
       font-size: var(--pad-base);
       letter-spacing: var(--ls-normal);
-      line-height: 1.6;
-      overflow-x: hidden;
-      display: flex;
-      min-height: var(--pell-100);
+      overflow: hidden;
+      height: var(--pell-100);
+      display: grid;
+      grid-template-columns: var(--pell-px-169) 1fr var(--pell-px-408);
     }
 
-    h1 { font-size: var(--pad-3xl); letter-spacing: var(--ls-tight); line-height: 1.1; }
-    h2 { font-size: var(--pad-2xl); letter-spacing: var(--ls-tight); line-height: 1.2; }
-    h3 { font-size: var(--pad-xl);  letter-spacing: var(--ls-normal); line-height: 1.3; }
+    /* Typography Scaled via Padovan */
+    h1, h2, h3, h4 { color: var(--text-high-contrast); font-weight: 700; }
+    h1 { font-size: var(--pad-3xl); letter-spacing: var(--ls-tight); }
+    h2 { font-size: var(--pad-2xl); letter-spacing: var(--ls-tight); }
+    h3 { font-size: var(--pad-xl);  letter-spacing: var(--ls-normal); }
     h4 { font-size: var(--pad-lg);  letter-spacing: var(--ls-wide); }
-    
-    .label-eyebrow { 
-      font-size: var(--pad-sm); 
-      letter-spacing: var(--ls-wider); 
-      text-transform: uppercase; 
-      color: var(--color-primary);
-    }
-    .caption { font-size: var(--pad-xs); color: var(--color-muted); letter-spacing: var(--ls-widest); }
 
     /* ==========================================================================
-       APP SHELL LAYOUT (PELL STRUCTURED)
+       SIDEBAR & CONTROL HUB NAVIGATION
        ========================================================================== */
-    #sidebar {
-      width: var(--pell-px-169);
-      background-color: var(--color-surface);
-      border-right: var(--fib-1) solid var(--color-border);
+    #sidebar-left {
+      background-color: var(--bg-surface-flat);
+      border-right: 1px solid var(--border-hardened);
+      padding: var(--fib-34) var(--fib-13);
       display: flex;
       flex-direction: column;
-      padding: var(--fib-34) var(--fib-21);
-      position: fixed;
-      height: var(--pell-100);
-      z-index: 100;
+      gap: var(--fib-55);
     }
 
-    .logo {
-      font-size: var(--pad-md);
-      font-weight: 800;
-      letter-spacing: var(--ls-tight);
-      margin-bottom: var(--fib-55);
-      display: flex;
-      align-items: center;
-      gap: var(--fib-8);
-    }
-
-    .logo span {
-      color: var(--color-primary);
-    }
-
-    .nav-menu {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: var(--fib-13);
-    }
-
-    .nav-item button {
-      background: none;
-      border: none;
-      color: var(--color-muted);
+    .lab-tag {
       font-size: var(--pad-sm);
-      letter-spacing: var(--ls-wide);
-      text-align: left;
-      width: 100%;
-      padding: var(--fib-8) var(--fib-13);
+      color: var(--text-high-contrast);
+      font-weight: 900;
+      letter-spacing: var(--ls-widest);
+      text-transform: uppercase;
+      border-bottom: 2px solid var(--glow-primary);
+      padding-bottom: var(--fib-8);
+    }
+
+    .nav-stack {
+      display: flex;
+      flex-direction: column;
+      gap: var(--fib-8);
+      list-style: none;
+    }
+
+    .nav-stack a {
+      color: var(--text-low-contrast);
+      text-decoration: none;
+      font-size: var(--pad-sm);
+      padding: var(--fib-13);
+      border-radius: var(--fib-3);
+      transition: all var(--lucas-ms-18) cubic-bezier(0.19, 1, 0.22, 1);
+      display: block;
+      border: 1px solid transparent;
+    }
+
+    .nav-stack a:hover {
+      color: var(--text-high-contrast);
+      background: var(--bg-surface-raised);
+    }
+
+    .nav-stack .active-route a {
+      color: var(--text-high-contrast);
+      background: var(--bg-surface-raised);
+      border-color: var(--border-interactive);
+      box-shadow: inset 3px 0 0 var(--glow-primary);
+    }
+
+    /* ==========================================================================
+       TELEMETRY PANEL (RIGHT HUD)
+       ========================================================================== */
+    #sidebar-right-hud {
+      background-color: var(--bg-surface-flat);
+      border-left: 1px solid var(--border-hardened);
+      padding: var(--fib-21);
+      display: flex;
+      flex-direction: column;
+      gap: var(--fib-34);
+    }
+
+    .hud-card {
+      background: var(--bg-surface-raised);
+      border: 1px solid var(--border-hardened);
+      padding: var(--fib-13);
       border-radius: var(--fib-5);
-      cursor: pointer;
-      transition: all var(--lucas-delay-18) cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    .nav-item button:hover, .nav-item.active button {
-      color: var(--color-text);
-      background-color: var(--color-surface-elevated);
-      padding-left: var(--fib-21);
+    .hud-metric {
+      font-size: var(--pad-xl);
+      color: var(--glow-accent);
+      font-weight: bold;
+      margin-top: var(--fib-5);
     }
 
-    .nav-item.active button {
-      border-left: var(--fib-3) solid var(--color-primary);
+    /* Live Scale Playground Input Controls */
+    .slider-control {
+      width: 100%;
+      margin-top: var(--fib-13);
+      accent-color: var(--glow-primary);
     }
 
-    #main-content {
-      margin-left: var(--pell-px-169);
-      flex-grow: 1;
-      min-height: var(--pell-100);
-      position: relative;
-    }
-
-    /* Modular Views Box-In Animation */
-    .view-container {
+    /* ==========================================================================
+       CORE VIEWPORT STAGE ENGINE
+       ========================================================================== */
+    #stage-container {
       padding: var(--fib-55);
-      opacity: 0;
-      transform: translateY(var(--fib-21));
-      transition: opacity var(--lucas-delay-47) ease, transform var(--lucas-delay-47) cubic-bezier(0.16, 1, 0.3, 1);
+      overflow-y: auto;
+      position: relative;
+      container-type: inline-size;
     }
 
-    .view-container.active {
+    .stage-wrapper {
+      opacity: 0;
+      transform: translateY(var(--fib-13));
+      transition: opacity var(--lucas-ms-29) ease, transform var(--lucas-ms-29) ease;
+    }
+
+    .stage-wrapper.mounted {
       opacity: 1;
       transform: translateY(0);
     }
 
     /* ==========================================================================
-       SHARED LAYOUT COMPONENTS (FIBONACCI & TRIBONACCI COMPLIANT)
+       COMPLEX RESPONSIVE COMPONENTS (HARDENED UI/UX STRAT)
        ========================================================================== */
-    .grid-dashboard {
+    .matrix-bento-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(var(--trib-274), 1fr));
-      gap: var(--fib-34);
+      gap: var(--fib-21);
       margin-top: var(--fib-34);
     }
 
-    .math-card {
-      background-color: var(--color-surface);
-      border: var(--fib-1) solid var(--color-border);
+    /* Container Queries for advanced component adaptability */
+    @container (min-width: 700px) {
+      .wide-bento-item {
+        grid-column: span 2;
+      }
+    }
+
+    .interactive-node {
+      background: var(--bg-surface-flat);
+      border: 1px solid var(--border-hardened);
       border-radius: var(--fib-8);
       padding: var(--fib-34);
       position: relative;
+      transition: border-color var(--lucas-ms-11) linear;
+    }
+
+    .interactive-node:hover {
+      border-color: var(--border-interactive);
+    }
+
+    .interactive-node::before {
+      content: ''; position: absolute; top: 0; left: 0; width: var(--fib-3); height: 100%;
+      background: var(--glow-primary); opacity: 0; transition: opacity var(--lucas-ms-18) ease;
+    }
+
+    .interactive-node:hover::before { opacity: 1; }
+
+    /* Custom CSS Hardware Acceleration Bar Plots */
+    .graph-rail {
+      background: var(--bg-dark-absolute);
+      height: var(--fib-21);
+      border-radius: var(--fib-3);
       overflow: hidden;
-      transition: border-color var(--lucas-delay-29) ease;
+      margin-top: var(--fib-13);
     }
 
-    .math-card:hover {
-      border-color: var(--color-primary);
+    .graph-fill {
+      height: 100%; width: 0%;
+      background: linear-gradient(90deg, var(--glow-primary), var(--glow-accent));
+      transition: width var(--lucas-ms-76) cubic-bezier(0.1, 0.9, 0.2, 1);
     }
 
-    .math-icon {
-      width: var(--trib-44);
-      height: var(--trib-44);
-      background-color: var(--color-surface-elevated);
-      border-radius: var(--fib-5);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: var(--fib-21);
-      color: var(--color-primary);
-    }
-
-    /* Modular Loader Spinner */
-    .loader {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: var(--trib-44);
-      height: var(--trib-44);
-      border: var(--fib-3) solid var(--color-border);
-      border-top-color: var(--color-primary);
+    /* Async Loading Indicator Component */
+    .matrix-spinner {
+      width: var(--trib-44); height: var(--trib-44);
+      border: var(--fib-3) solid var(--border-hardened);
+      border-top-color: var(--glow-primary);
       border-radius: 50%;
-      animation: spin var(--lucas-delay-76) linear infinite;
+      animation: spin var(--lucas-ms-76) linear infinite;
+      position: absolute; top: 50%; left: 50%; margin: calc(-1 * var(--trib-24)) 0 0 calc(-1 * var(--trib-24));
     }
-
-    @keyframes spin {
-      to { transform: translate(-50%, -50%) rotate(360deg); }
-    }
+    @keyframes spin { to { transform: rotate(360deg); } }
   </style>
 </head>
 <body>
 
-  <aside id="sidebar">
-    <div class="logo">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14h6v6H4zM14 4h6v6h-6zM4 4h6v6H4zM14 14h6v6h-6z"/></svg>
-      0math<span>v2</span>
-    </div>
-    <ul class="nav-menu">
-      <li class="nav-item active" data-page="blueprint"><button>System Blueprint</button></li>
-      <li class="nav-item" data-page="analytics"><button>Data & Analytics</button></li>
-      <li class="nav-item" data-page="motion"><button>Motion Matrix</button></li>
+  <aside id="sidebar-left">
+    <div class="lab-tag">FUTELLAB // 0M</div>
+    <ul class="nav-stack">
+      <li data-route="blueprint"><a href="#blueprint">01 // Matrix Spec</a></li>
+      <li data-route="analytics"><a href="#analytics">02 // Vector Grid</a></li>
+      <li data-route="motion"><a href="#motion">03 // Quantum Delay</a></li>
     </ul>
   </aside>
 
-  <main id="main-content">
-    <div id="app-viewport"></div>
+  <main id="stage-container">
+    <div id="router-target"></div>
   </main>
 
-  <template id="page-blueprint">
-    <div class="view-container">
-      <style>
-        .hero-section {
-          min-height: var(--pell-29);
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          margin-bottom: var(--fib-55);
-          border-bottom: var(--fib-1) solid var(--color-border);
-          padding-bottom: var(--fib-55);
-        }
-        .hero-section h1 { margin-top: var(--fib-13); margin-bottom: var(--fib-21); }
-        .hero-section p { max-width: 600px; color: var(--color-muted); font-size: var(--pad-md); }
-        
-        .sequence-bar {
-          height: var(--fib-8);
-          background: var(--color-border);
-          border-radius: var(--fib-3);
-          margin-top: var(--fib-13);
-          position: relative;
-          overflow: hidden;
-        }
-        .sequence-fill {
-          height: 100%;
-          background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
-          width: 0%;
-          transition: width var(--lucas-delay-76) ease-in-out;
-        }
-      </style>
+  <aside id="sidebar-right-hud">
+    <div class="hud-card">
+      <p style="font-size: var(--pad-sm); color: var(--text-low-contrast);">SYSTEM ROUTER LIFECYCLE</p>
+      <div id="hud-lifecycle-log" style="font-size: var(--pad-xs); margin-top: var(--fib-5); color: var(--text-high-contrast);">INIT: Awaiting Step...</div>
+    </div>
+
+    <div class="hud-card">
+      <p style="font-size: var(--pad-sm); color: var(--text-low-contrast);">RENDER PIPELINE EFFICIENCY</p>
+      <div class="hud-metric" id="fps-display">-- FPS</div>
+      <p style="font-size: var(--pad-xs); color: var(--text-low-contrast); margin-top: var(--fib-3);">Target Stability: 60FPS</p>
+    </div>
+
+    <div class="hud-card">
+      <p style="font-size: var(--pad-sm); color: var(--text-low-contrast);">SYSTEM MATRIX SCALAR PLAYGROUND</p>
+      <input type="range" min="0.5" max="2" step="0.1" value="1" class="slider-control" id="scalar-engine">
+      <div style="display: flex; justify-content: space-between; font-size: var(--pad-xs); margin-top: var(--fib-8);">
+        <span>MIN: 0.5x</span>
+        <span id="scalar-value" style="color: var(--glow-primary); font-weight: bold;">1.0x</span>
+        <span>MAX: 2.0x</span>
+      </div>
+    </div>
+  </aside>
+
+  <template id="view-blueprint">
+    <div class="stage-wrapper">
+      <h2>Mathematical Design Matrix Specification</h2>
+      <p style="margin-top: var(--fib-8); font-size: var(--pad-sm);">Dynamic execution tracking via layout structural bindings.</p>
       
-      <section class="hero-section">
-        <span class="label-eyebrow">Architecture Matrix</span>
-        <h1>Every pixel is derived. No arbitrary values.</h1>
-        <p>A multi-sequence mathematical framework mapped perfectly into native UI modules. Five layers of deterministic digital presentation.</p>
-      </section>
-
-      <div class="grid-dashboard">
-        <div class="math-card">
-          <div class="math-icon">Φ</div>
-          <h4>Layer 1: Fibonacci</h4>
-          <p class="caption" style="margin-bottom: var(--fib-13)">Micro-spacing & Layout Paddings</p>
-          <p>Controls margins, gaps, radiuses, and structural intervals uniformly.</p>
-          <div class="sequence-bar"><div class="sequence-fill" data-width="100%"></div></div>
+      <div class="matrix-bento-grid">
+        <div class="interactive-node wide-bento-item">
+          <h4>Fibonacci Micro-Paddings Array</h4>
+          <p style="font-size: var(--pad-sm); margin-top: var(--fib-8);">Simulating automated mathematical layout flow mechanics down to layout roots.</p>
+          <div class="graph-rail"><div class="graph-fill" data-gauge="100%"></div></div>
         </div>
-        <div class="math-card">
-          <div class="math-icon">L</div>
-          <h4>Layer 2: Lucas</h4>
-          <p class="caption" style="margin-bottom: var(--fib-13)">Animation Timing Sequences</p>
-          <p>Drives the duration and rhythmic multi-stagger states of elements smoothly.</p>
-          <div class="sequence-bar"><div class="sequence-fill" data-width="85%"></div></div>
+        <div class="interactive-node">
+          <h4>Padovan Typographic Target Step</h4>
+          <p style="font-size: var(--pad-sm); margin-top: var(--fib-8);">Non-harmonic modular typographic allocation structures.</p>
+          <div class="graph-rail"><div class="graph-fill" data-gauge="65%"></div></div>
         </div>
-        <div class="math-card">
-          <div class="math-icon">T</div>
-          <h4>Layer 3: Tribonacci</h4>
-          <p class="caption" style="margin-bottom: var(--fib-13)">Component Target Bounds</p>
-          <p>Governs safe touch-targets, card thresholds, and flex system bases.</p>
-          <div class="sequence-bar"><div class="sequence-fill" data-width="60%"></div></div>
+        <div class="interactive-node">
+          <h4>Pell Viewport Control Scaling</h4>
+          <p style="font-size: var(--pad-sm); margin-top: var(--fib-8);">Silver ratio bounding box structures matching device constraints.</p>
+          <div class="graph-rail"><div class="graph-fill" data-gauge="45%"></div></div>
         </div>
       </div>
     </div>
   </template>
 
-  <template id="page-analytics">
-    <div class="view-container">
-      <style>
-        .analytics-header { margin-bottom: var(--fib-34); }
-        .data-grid {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(var(--trib-149), 1fr));
-          gap: var(--fib-21);
-        }
-        .stat-block {
-          background: var(--color-surface-elevated);
-          padding: var(--fib-21);
-          border-radius: var(--fib-5);
-          border-left: var(--fib-3) solid var(--color-accent);
-        }
-        .stat-value {
-          font-size: var(--pad-2xl);
-          font-weight: bold;
-          letter-spacing: var(--ls-tight);
-          color: var(--color-text);
-        }
-        /* Custom pure CSS Vector Chart using system variables */
-        .chart-box {
-          height: var(--pell-29);
-          border: var(--fib-1) solid var(--color-border);
-          border-radius: var(--fib-8);
-          margin-top: var(--fib-34);
-          display: flex;
-          align-items: flex-end;
-          padding: var(--fib-21);
-          gap: var(--fib-13);
-          background: linear-gradient(180deg, transparent 90%, rgba(255,255,255,0.02) 90%);
-          background-size: 100% var(--fib-34);
-        }
-        .chart-bar {
-          flex-grow: 1;
-          background: var(--color-primary);
-          border-radius: var(--fib-3) var(--fib-3) 0 0;
-          opacity: 0.8;
-          transition: height var(--lucas-delay-47) ease;
-          height: 0px;
-        }
-        .chart-bar:hover { opacity: 1; background: var(--color-accent); }
-      </style>
-
-      <div class="analytics-header">
-        <span class="label-eyebrow">Deterministic Operations</span>
-        <h2>Sequence Node Analytics</h2>
-      </div>
-
-      <div class="data-grid">
-        <div class="stat-block">
-          <p class="caption">Tribonacci Min-Width</p>
-          <div class="stat-value">274px</div>
+  <template id="view-analytics">
+    <div class="stage-wrapper">
+      <h2>Reactive Data Vector Grids</h2>
+      <p style="margin-top: var(--fib-8); font-size: var(--pad-sm);">Dynamic calculations executing calculations live via CSS properties.</p>
+      
+      <div class="matrix-bento-grid">
+        <div class="interactive-node">
+          <span style="font-size: var(--pad-xs); color: var(--glow-accent);">NODE STATE 01</span>
+          <h3 style="margin-top: var(--fib-13)">$trib-274</h3>
+          <p style="font-size: var(--pad-sm); color: var(--text-low-contrast); margin-top: var(--fib-5);">Minimum safe spatial box resolution metric limit block.</p>
         </div>
-        <div class="stat-block">
-          <p class="caption">Pell Macro Bounds</p>
-          <div class="stat-value">408px</div>
-        </div>
-        <div class="stat-block">
-          <p class="caption">Padovan Base Size</p>
-          <div class="stat-value">16px</div>
+        <div class="interactive-node">
+          <span style="font-size: var(--pad-xs); color: var(--glow-accent);">NODE STATE 02</span>
+          <h3 style="margin-top: var(--fib-13)">$pell-px-408</h3>
+          <p style="font-size: var(--pad-sm); color: var(--text-low-contrast); margin-top: var(--fib-5);">Maximum interface slide out modular control layout limit boundary.</p>
         </div>
       </div>
 
-      <div class="chart-box">
-        <div class="chart-bar" data-height="13%"></div>
-        <div class="chart-bar" data-height="21%"></div>
-        <div class="chart-bar" data-height="34%"></div>
-        <div class="chart-bar" data-height="55%"></div>
-        <div class="chart-bar" data-height="89%"></div>
-        <div class="chart-bar" data-height="65%"></div>
-        <div class="chart-bar" data-height="49%"></div>
-        <div class="chart-bar" data-height="37%"></div>
+      <div class="interactive-node" style="margin-top: var(--fib-21);">
+        <h4>Live Calculated Vectors Array Map</h4>
+        <div style="display: flex; gap: var(--fib-8); align-items: flex-end; height: var(--pell-29); margin-top: var(--fib-21); background: var(--bg-dark-absolute); padding: var(--fib-13); border-radius: var(--fib-5);">
+          <div class="graph-fill" data-gauge="20%" style="width: 12.5%; height: 0%;" id="bar-1"></div>
+          <div class="graph-fill" data-gauge="40%" style="width: 12.5%; height: 0%;" id="bar-2"></div>
+          <div class="graph-fill" data-gauge="85%" style="width: 12.5%; height: 0%;" id="bar-3"></div>
+          <div class="graph-fill" data-gauge="50%" style="width: 12.5%; height: 0%;" id="bar-4"></div>
+          <div class="graph-fill" data-gauge="95%" style="width: 12.5%; height: 0%;" id="bar-5"></div>
+          <div class="graph-fill" data-gauge="30%" style="width: 12.5%; height: 0%;" id="bar-6"></div>
+          <div class="graph-fill" data-gauge="70%" style="width: 12.5%; height: 0%;" id="bar-7"></div>
+          <div class="graph-fill" data-gauge="60%" style="width: 12.5%; height: 0%;" id="bar-8"></div>
+        </div>
       </div>
     </div>
   </template>
 
-  <template id="page-motion">
-    <div class="view-container">
-      <style>
-        .motion-intro { margin-bottom: var(--fib-34); }
-        .stagger-container {
-          display: flex;
-          flex-direction: column;
-          gap: var(--fib-13);
-          max-width: var(--pell-px-408);
-        }
-        .stagger-row {
-          background: var(--color-surface);
-          border: var(--fib-1) solid var(--color-border);
-          padding: var(--fib-13) var(--fib-21);
-          border-radius: var(--fib-5);
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          transform: translateX(-50px);
-          opacity: 0;
-          transition: transform var(--lucas-delay-47) cubic-bezier(0.16, 1, 0.3, 1), opacity var(--lucas-delay-47) ease;
-        }
-        .stagger-container.animate .stagger-row {
-          transform: translateX(0);
-          opacity: 1;
-        }
-        .trigger-btn {
-          background: var(--color-primary);
-          color: white;
-          border: none;
-          padding: var(--fib-13) var(--fib-21);
-          border-radius: var(--fib-5);
-          font-size: var(--pad-sm);
-          letter-spacing: var(--ls-wide);
-          cursor: pointer;
-          margin-bottom: var(--fib-34);
-          transition: background-color var(--lucas-delay-1) ease;
-        }
-        .trigger-btn:hover { background: #4f46e5; }
-      </style>
-
-      <div class="motion-intro">
-        <span class="label-eyebrow">Lucas Layer Orchestration</span>
-        <h2>Rhythmic Cascade Matrix</h2>
-        <p class="caption" style="margin-top: var(--fib-5)">Stagger instances precisely decoupled using native sequence delays</p>
-      </div>
-
-      <button class="trigger-btn" id="retrigger-motion">Pulse Cascade Array</button>
-
-      <div class="stagger-container" id="cascade-box">
-        <div class="stagger-row" style="transition-delay: var(--lucas-delay-2);"><span>Step 1 (Lucas 1)</span><code>0.01s</code></div>
-        <div class="stagger-row" style="transition-delay: var(--lucas-delay-1);"><span>Step 2 (Lucas 2)</span><code>0.02s</code></div>
-        <div class="stagger-row" style="transition-delay: var(--lucas-delay-3);"><span>Step 3 (Lucas 3)</span><code>0.03s</code></div>
-        <div class="stagger-row" style="transition-delay: var(--lucas-delay-4);"><span>Step 4 (Lucas 4)</span><code>0.04s</code></div>
-        <div class="stagger-row" style="transition-delay: var(--lucas-delay-7);"><span>Step 5 (Lucas 7)</span><code>0.07s</code></div>
-        <div class="stagger-row" style="transition-delay: var(--lucas-delay-11);"><span>Step 6 (Lucas 11)</span><code>0.11s</code></div>
-        <div class="stagger-row" style="transition-delay: var(--lucas-delay-18);"><span>Step 7 (Lucas 18)</span><code>0.18s</code></div>
-      </div>
+  <template id="view-motion">
+    <div class="stage-wrapper">
+      <h2>Lucas Sequence Micro-Interaction Matrices</h2>
+      <p style="margin-top: var(--fib-8); font-size: var(--pad-sm);">Testing visual flow and rendering thread prioritization parameters.</p>
+      
+      <div class="matrix-bento-grid" id="motion-cascade-matrix" style="margin-top: var(--fib-34);">
+        </div>
     </div>
   </template>
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      
-      const viewport = document.getElementById('app-viewport');
-      const navItems = document.querySelectorAll('.nav-item');
+      const target = document.getElementById('router-target');
+      const lifecycleLogger = document.getElementById('hud-lifecycle-log');
+      let activeViewInstance = null;
 
-      // Setup Simulated Asynchronous Module Pipeline Loader
-      async function loadViewModule(viewId) {
-        // Render Modular System Loader State
-        viewport.innerHTML = '<div class="loader"></div>';
-        
-        // Simulating fine network latency via discrete Lucas metrics
-        await new Promise(resolve => setTimeout(resolve, 300));
+      // Real-Time Frame Rate Meter Analytics Engine
+      let frameCount = 0, lastCheckTime = performance.now(), currentFps = 60;
+      function executeFpsMeterLoop() {
+        frameCount++;
+        const now = performance.now();
+        if (now >= lastCheckTime + 1000) {
+          currentFps = Math.round((frameCount * 1000) / (now - lastCheckTime));
+          document.getElementById('fps-display').innerText = `${currentFps} FPS`;
+          frameCount = 0;
+          lastCheckTime = now;
+        }
+        requestAnimationFrame(executeFpsMeterLoop);
+      }
+      requestAnimationFrame(executeFpsMeterLoop);
 
-        const template = document.getElementById(`page-${viewId}`);
-        if (!template) {
-          viewport.innerHTML = `<div>Module Exception: Error loading view '${viewId}'</div>`;
+      // System Dynamic Scalar Transformation Pipeline
+      const scalarInput = document.getElementById('scalar-engine');
+      const scalarValueDisplay = document.getElementById('scalar-value');
+      scalarInput.addEventListener('input', (e) => {
+        const value = e.target.value;
+        document.documentElement.style.setProperty('--math-scalar', value);
+        scalarValueDisplay.innerText = `${parseFloat(value).toFixed(1)}x`;
+      });
+
+      // View Controller Matrix Initialization Hooks
+      const viewHooks = {
+        blueprint: {
+          onMount: (container) => {
+            container.querySelectorAll('.graph-fill').forEach(fill => {
+              requestAnimationFrame(() => fill.style.width = fill.getAttribute('data-gauge'));
+            });
+          },
+          onUnmount: () => {}
+        },
+        analytics: {
+          onMount: (container) => {
+            container.querySelectorAll('.graph-fill').forEach(fill => {
+              requestAnimationFrame(() => fill.style.height = fill.getAttribute('data-gauge'));
+            });
+          },
+          onUnmount: () => {}
+        },
+        motion: {
+          onMount: (container) => {
+            const grid = container.querySelector('#motion-cascade-matrix');
+            // Hard structural Lucas metrics sequence values array
+            const lucasDelays = ['--lucas-ms-2', '--lucas-ms-4', '--lucas-ms-7', '--lucas-ms-11', '--lucas-ms-18', '--lucas-ms-29'];
+            
+            for(let i = 0; i < 6; i++) {
+              const element = document.createElement('div');
+              element.className = 'interactive-node';
+              element.style.opacity = '0';
+              element.style.transform = 'scale(0.95)';
+              element.style.transition = `all var(--lucas-ms-47) ease`;
+              element.style.transitionDelay = `var(${lucasDelays[i]})`;
+              element.innerHTML = `<h4>Cascade Step 0${i+1}</h4><p style="font-size:var(--pad-sm); margin-top:var(--fib-8)">Delay Target Bind: ${lucasDelays[i]}</p>`;
+              grid.appendChild(element);
+              
+              requestAnimationFrame(() => {
+                element.style.opacity = '1';
+                element.style.transform = 'scale(1)';
+              });
+            }
+          },
+          onUnmount: () => {}
+        }
+      };
+
+      // Production Grade Routing Engine Configuration
+      async function routerEngine() {
+        const startTime = performance.now();
+        const rawHash = window.location.hash.replace('#', '');
+        const currentRoute = rawHash || 'blueprint';
+
+        // Execute safety unmount cleanup processes if required
+        if (activeViewInstance && viewHooks[activeViewInstance]?.onUnmount) {
+          viewHooks[activeViewInstance].onUnmount();
+        }
+
+        // Active state navigation menu update loop
+        document.querySelectorAll('.nav-stack li').forEach(item => {
+          if(item.getAttribute('data-route') === currentRoute) {
+            item.classList.add('active-route');
+          } else {
+            item.classList.remove('active-route');
+          }
+        });
+
+        // Set layout loader simulation feedback state
+        target.innerHTML = '<div class="matrix-spinner"></div>';
+
+        // Async simulation delay using Lucas 290ms parameters
+        await new Promise(resolve => setTimeout(resolve, 290));
+
+        const viewTemplate = document.getElementById(`view-${currentRoute}`);
+        if (!viewTemplate) {
+          target.innerHTML = `<div style="padding:var(--fib-34); color:red;">Router Fault: View Archetype Target Not Found [${currentRoute}]</div>`;
           return;
         }
 
-        // Clone Node Module Data Fragment
-        const instance = template.content.cloneNode(true);
-        viewport.innerHTML = '';
-        viewport.appendChild(instance);
+        const viewContent = viewTemplate.content.cloneNode(true);
+        target.innerHTML = '';
+        target.appendChild(viewContent);
 
-        // Run post-render initialization hooks specific to individual view definitions
-        requestAnimationFrame(() => {
-          const viewContainer = viewport.querySelector('.view-container');
-          if (viewContainer) {
-            viewContainer.classList.add('active');
-            initViewBehaviors(viewId, viewContainer);
-          }
-        });
-      }
+        const mountedWrapper = target.querySelector('.stage-wrapper');
+        activeViewInstance = currentRoute;
 
-      // Initialize View Lifecycle Logic hooks natively
-      function initViewBehaviors(viewId, container) {
-        if (viewId === 'blueprint') {
-          // Micro-fills for mathematical bar meters
-          container.querySelectorAll('.sequence-fill').forEach(fill => {
-            setTimeout(() => {
-              fill.style.width = fill.getAttribute('data-width');
-            }, 100);
-          });
-        } 
-        else if (viewId === 'analytics') {
-          // Fluid height animation calculations via custom arrays
-          container.querySelectorAll('.chart-bar').forEach(bar => {
-            setTimeout(() => {
-              bar.style.height = bar.getAttribute('data-height');
-            }, 150);
-          });
-        } 
-        else if (viewId === 'motion') {
-          const cascadeBox = container.querySelector('#cascade-box');
-          const triggerBtn = container.querySelector('#retrigger-motion');
-          
-          setTimeout(() => cascadeBox.classList.add('animate'), 50);
-
-          triggerBtn.addEventListener('click', () => {
-            cascadeBox.classList.remove('animate');
-            // Force Layout Recalculation to cleanly interrupt state
-            void cascadeBox.offsetWidth; 
-            cascadeBox.classList.add('animate');
-          });
+        // Fire lifecycle allocation maps
+        if (viewHooks[currentRoute]?.onMount) {
+          viewHooks[currentRoute].onMount(mountedWrapper);
         }
+
+        requestAnimationFrame(() => {
+          if(mountedWrapper) mountedWrapper.classList.add('mounted');
+          const endTime = performance.now();
+          lifecycleLogger.innerHTML = `ROUTE: /${currentRoute}<br>MOUNT TIME: ${parseFloat(endTime - startTime).toFixed(2)}ms`;
+        });
       }
 
-      // App Shell Navigation Listener Framework
-      navItems.forEach(item => {
-        item.addEventListener('click', (e) => {
-          const activeItem = document.querySelector('.nav-item.active');
-          if (activeItem === item) return;
-
-          activeItem.classList.remove('active');
-          item.classList.add('active');
-
-          const targetPage = item.getAttribute('data-page');
-          loadViewModule(targetPage);
-        });
-      });
-
-      // Initial system bootstrapping execution state 
-      loadViewModule('blueprint');
+      window.addEventListener('hashchange', routerEngine);
+      // Bootstrapping initialization sequence execution
+      routerEngine();
     });
   </script>
 </body>
