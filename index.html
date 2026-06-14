@@ -3,494 +3,491 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>0math v2 — Hardened Lab Environment</title>
+  <title>0math v2 // Spatial WebApp Console</title>
   <style>
     /* ==========================================================================
-       CORE MATHEMATICAL MATRIX CONFIGURATION (:root)
+       THE MATHEMATICAL UNIVERSE ARCHITECTURE (:root)
        ========================================================================== */
     :root {
-      /* Base Scalar Multiplier (Altered via Live Play Engine) */
-      --math-scalar: 1;
+      /* Layer 1 — Fibonacci Matrix (Micro-Gaps & Thickness) */
+      --fib-1: 1px;   --fib-2: 2px;   --fib-3: 3px;   --fib-5: 5px;
+      --fib-8: 8px;   --fib-13: 13px; --fib-21: 21px; --fib-34: 34px;
+      --fib-55: 55px; --fib-89: 89px; --fib-144: 144px;
 
-      /* Layer 1 — Fibonacci Matrix: Micro-Spacing (Base Scaled) */
-      --fib-1: calc(1px * var(--math-scalar));
-      --fib-2: calc(2px * var(--math-scalar));
-      --fib-3: calc(3px * var(--math-scalar));
-      --fib-5: calc(5px * var(--math-scalar));
-      --fib-8: calc(8px * var(--math-scalar));
-      --fib-13: calc(13px * var(--math-scalar));
-      --fib-21: calc(21px * var(--math-scalar));
-      --fib-34: calc(34px * var(--math-scalar));
-      --fib-55: calc(55px * var(--math-scalar));
-      --fib-89: calc(89px * var(--math-scalar));
-      --fib-144: calc(144px * var(--math-scalar));
+      /* Layer 2 — Lucas Kinematic Matrices (Strict Duration Bounds) */
+      --lucas-ms-7: 70ms;     --lucas-ms-11: 110ms;   --lucas-ms-18: 180ms;
+      --lucas-ms-29: 290ms;   --lucas-ms-47: 470ms;   --lucas-ms-76: 760ms;
+      --lucas-ms-123: 1230ms;
 
-      /* Layer 2 — Lucas Matrix: High Fidelity Temporal Durations */
-      --lucas-ms-1: 10ms;   --lucas-ms-2: 20ms;   --lucas-ms-3: 30ms;
-      --lucas-ms-4: 40ms;   --lucas-ms-7: 70ms;   --lucas-ms-11: 110ms;
-      --lucas-ms-18: 180ms; --lucas-ms-29: 290ms; --lucas-ms-47: 470ms;
-      --lucas-ms-76: 760ms;
+      /* Lucas-Derived Cubic-Bezier Functions (Mathematical Easing Engine) */
+      --ease-lucas-smooth: cubic-bezier(0.18, 0.07, 0.29, 1.0);  /* Ultra premium deceleration */
+      --ease-lucas-snap: cubic-bezier(0.11, 0.76, 0.18, 1.0);   /* Immediate structural feedback */
+      --ease-lucas-3d: cubic-bezier(0.47, -0.18, 0.29, 1.18);   /* Kinetic spatial overshoot */
 
-      /* Layer 3 — Tribonacci Matrix: Structural Component Boundary Thresholds */
-      --trib-1: 1px;        --trib-2: 2px;        --trib-4: 4px;
-      --trib-7: 7px;        --trib-13: 13px;      --trib-24: 24px;
-      --trib-44: 44px;      --trib-81: 81px;      --trib-149: 149px;
-      --trib-274: 274px;    --trib-504: 504px;
+      /* Layer 3 — Tribonacci Grid Constancies (Spatial Targets) */
+      --trib-base: 13px;
+      --trib-target-sm: 44px;
+      --trib-target-md: 81px;
+      --trib-bound-card: 310px;
 
-      /* Layer 4 — Padovan Matrix: Typographic Micro-Scale */
-      --pad-xs: 9px;   --pad-sm: 12px;  --pad-base: 16px; --pad-md: 21px;
-      --pad-lg: 28px;  --pad-xl: 37px;  --pad-2xl: 49px;  --pad-3xl: 65px;
+      /* Layer 4 — Padovan Font Scales */
+      --pad-xs: 10px;  --pad-sm: 12px;  --pad-base: 16px; --pad-md: 21px;
+      --pad-lg: 28px;  --pad-xl: 37px;  --pad-2xl: 49px;
+
+      /* Layer 5 — Pell Spatial Proportions */
+      --pell-px-sidebar: 260px;
+      --pell-px-telemetry: 360px;
+
+      /* Premium Cyberpunk / Industrial Lab Palette */
+      --bg-void: #020204;
+      --bg-panel: rgba(10, 10, 14, 0.75);
+      --bg-panel-elevated: rgba(22, 22, 30, 0.9);
+      --border-dim: rgba(255, 255, 255, 0.04);
+      --border-bright: rgba(99, 102, 241, 0.25);
       
-      --ls-tight: -0.02em; --ls-normal: 0em; --ls-wide: 0.04em;
-      --ls-wider: 0.07em;  --ls-widest: 0.12em;
-
-      /* Layer 5 — Pell Matrix: Macro Viewport System Sizing */
-      --pell-5: 5vh;    --pell-12: 12vh;   --pell-29: 29vh;
-      --pell-70: 70vh;  --pell-100: 100vh;
-      --pell-px-169: 169px; --pell-px-408: 408px;
-
-      /* Visual Aesthetics Spec Map */
-      --bg-dark-absolute: #050507;
-      --bg-surface-flat: #0c0c10;
-      --bg-surface-raised: #14141a;
-      --border-hardened: #1f1f29;
-      --border-interactive: #3b3b4f;
-      
-      --glow-primary: #5850ec;
-      --glow-accent: #059669;
-      --text-high-contrast: #ffffff;
-      --text-mid-contrast: #9ca3af;
-      --text-low-contrast: #4b5563;
+      --neon-primary: #6366f1;
+      --neon-accent: #00f2fe;
+      --neon-warn: #ff0055;
+      --text-pure: #ffffff;
+      --text-body: #94a3b8;
+      --text-dark: #475569;
     }
 
     /* ==========================================================================
-       CSS RESET & BASE LAB ARCHITECTURE
+       GLOBAL APP CORE & 3D INTERACTIVE VIEWPORT ENGINE
        ========================================================================== */
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    * { box-sizing: border-box; margin: 0; padding: 0; -webkit-font-smoothing: antialiased; }
+    
     body {
-      background-color: var(--bg-dark-absolute);
-      color: var(--text-mid-contrast);
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      background-color: var(--bg-void);
+      color: var(--text-body);
+      font-family: ui-monospace, 'SF Mono', Cascadia, monospace;
       font-size: var(--pad-base);
-      letter-spacing: var(--ls-normal);
+      height: 100vh;
       overflow: hidden;
-      height: var(--pell-100);
       display: grid;
-      grid-template-columns: var(--pell-px-169) 1fr var(--pell-px-408);
+      grid-template-columns: var(--pell-px-sidebar) 1fr var(--pell-px-telemetry);
+      grid-template-rows: var(--fib-55) 1fr;
+      grid-template-areas: 
+        "header header header"
+        "sidebar main telemetry";
+      /* Establish continuous 3D Space perspective context across child elements */
+      perspective: 1400px;
     }
 
-    /* Typography Scaled via Padovan */
-    h1, h2, h3, h4 { color: var(--text-high-contrast); font-weight: 700; }
-    h1 { font-size: var(--pad-3xl); letter-spacing: var(--ls-tight); }
-    h2 { font-size: var(--pad-2xl); letter-spacing: var(--ls-tight); }
-    h3 { font-size: var(--pad-xl);  letter-spacing: var(--ls-normal); }
-    h4 { font-size: var(--pad-lg);  letter-spacing: var(--ls-wide); }
-
-    /* ==========================================================================
-       SIDEBAR & CONTROL HUB NAVIGATION
-       ========================================================================== */
-    #sidebar-left {
-      background-color: var(--bg-surface-flat);
-      border-right: 1px solid var(--border-hardened);
-      padding: var(--fib-34) var(--fib-13);
-      display: flex;
-      flex-direction: column;
-      gap: var(--fib-55);
-    }
-
-    .lab-tag {
-      font-size: var(--pad-sm);
-      color: var(--text-high-contrast);
-      font-weight: 900;
-      letter-spacing: var(--ls-widest);
-      text-transform: uppercase;
-      border-bottom: 2px solid var(--glow-primary);
-      padding-bottom: var(--fib-8);
-    }
-
-    .nav-stack {
-      display: flex;
-      flex-direction: column;
-      gap: var(--fib-8);
-      list-style: none;
-    }
-
-    .nav-stack a {
-      color: var(--text-low-contrast);
-      text-decoration: none;
-      font-size: var(--pad-sm);
-      padding: var(--fib-13);
-      border-radius: var(--fib-3);
-      transition: all var(--lucas-ms-18) cubic-bezier(0.19, 1, 0.22, 1);
-      display: block;
-      border: 1px solid transparent;
-    }
-
-    .nav-stack a:hover {
-      color: var(--text-high-contrast);
-      background: var(--bg-surface-raised);
-    }
-
-    .nav-stack .active-route a {
-      color: var(--text-high-contrast);
-      background: var(--bg-surface-raised);
-      border-color: var(--border-interactive);
-      box-shadow: inset 3px 0 0 var(--glow-primary);
+    /* Hardware Accelerated Backdrop Matrix Effect */
+    body::before {
+      content: ''; position: absolute; inset: 0; z-index: 0;
+      background-image: linear-gradient(rgba(255,255,255,0.01) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.01) 1px, transparent 1px);
+      background-size: var(--fib-34) var(--fib-34);
+      transform: rotateX(60deg) translateY(-30%) translateZ(-200px);
+      transform-origin: top center;
+      opacity: 0.4;
+      pointer-events: none;
     }
 
     /* ==========================================================================
-       TELEMETRY PANEL (RIGHT HUD)
+       APP SHELL: FIXED CONSOLE GLASS PANELS
        ========================================================================== */
-    #sidebar-right-hud {
-      background-color: var(--bg-surface-flat);
-      border-left: 1px solid var(--border-hardened);
-      padding: var(--fib-21);
-      display: flex;
-      flex-direction: column;
-      gap: var(--fib-34);
+    header {
+      grid-area: header; background: var(--bg-panel); border-bottom: var(--fib-1) solid var(--border-dim);
+      display: flex; align-items: center; justify-content: space-between; padding: 0 var(--fib-21); z-index: 50;
+      backdrop-filter: blur(12px);
     }
 
-    .hud-card {
-      background: var(--bg-surface-raised);
-      border: 1px solid var(--border-hardened);
-      padding: var(--fib-13);
-      border-radius: var(--fib-5);
+    .console-title { font-size: var(--pad-sm); font-weight: 900; letter-spacing: 0.2em; color: var(--text-pure); }
+    .console-title span { color: var(--neon-accent); }
+
+    #sidebar-navigation {
+      grid-area: sidebar; background: var(--bg-panel); border-right: var(--fib-1) solid var(--border-dim);
+      padding: var(--fib-34) var(--fib-13); z-index: 40; backdrop-filter: blur(12px);
     }
 
-    .hud-metric {
-      font-size: var(--pad-xl);
-      color: var(--glow-accent);
-      font-weight: bold;
-      margin-top: var(--fib-5);
+    .nav-group { list-style: none; display: flex; flex-direction: column; gap: var(--fib-8); }
+    .nav-link {
+      display: flex; align-items: center; justify-content: space-between;
+      color: var(--text-dark); text-decoration: none; font-size: var(--pad-sm);
+      padding: var(--fib-13); border-radius: var(--fib-3); border: var(--fib-1) solid transparent;
+      transition: all var(--lucas-ms-29) var(--ease-lucas-smooth);
+    }
+    .nav-link:hover { color: var(--text-pure); background: rgba(255,255,255,0.02); }
+    .nav-item.active-node .nav-link {
+      color: var(--text-pure); background: var(--bg-panel-elevated);
+      border-color: var(--border-bright); box-shadow: 0 0 var(--fib-21) rgba(99, 102, 241, 0.1);
     }
 
-    /* Live Scale Playground Input Controls */
-    .slider-control {
-      width: 100%;
-      margin-top: var(--fib-13);
-      accent-color: var(--glow-primary);
+    #telemetry-sidebar {
+      grid-area: telemetry; background: var(--bg-panel); border-left: var(--fib-1) solid var(--border-dim);
+      padding: var(--fib-21); z-index: 40; backdrop-filter: blur(12px); display: flex; flex-direction: column; gap: var(--fib-21);
     }
 
     /* ==========================================================================
-       CORE VIEWPORT STAGE ENGINE
+       3D APPARATUS VIEWPORT STAGE ENGINE
        ========================================================================== */
-    #stage-container {
-      padding: var(--fib-55);
-      overflow-y: auto;
-      position: relative;
-      container-type: inline-size;
+    #main-viewport {
+      grid-area: main; overflow-y: auto; overflow-x: hidden; padding: var(--fib-55);
+      z-index: 10; position: relative;
+      /* Enforce complex multi-axis rendering isolation handles */
+      transform-style: preserve-3d;
     }
 
-    .stage-wrapper {
+    .spatial-stage {
       opacity: 0;
-      transform: translateY(var(--fib-13));
-      transition: opacity var(--lucas-ms-29) ease, transform var(--lucas-ms-29) ease;
+      transform: translateZ(-150px) rotateX(15deg);
+      transition: 
+        opacity var(--lucas-ms-47) var(--ease-lucas-smooth),
+        transform var(--lucas-ms-47) var(--ease-lucas-3d);
+      transform-style: preserve-3d;
     }
 
-    .stage-wrapper.mounted {
+    .spatial-stage.active-mount {
       opacity: 1;
-      transform: translateY(0);
+      transform: translateZ(0px) rotateX(0deg);
     }
 
     /* ==========================================================================
-       COMPLEX RESPONSIVE COMPONENTS (HARDENED UI/UX STRAT)
+       HIGH-FIDELITY CRITICAL 3D UI UX COMPONENTS
        ========================================================================== */
-    .matrix-bento-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(var(--trib-274), 1fr));
-      gap: var(--fib-21);
-      margin-top: var(--fib-34);
+    .spatial-grid-bento {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(var(--trib-bound-card), 1fr));
+      gap: var(--fib-34); transform-style: preserve-3d;
     }
 
-    /* Container Queries for advanced component adaptability */
-    @container (min-width: 700px) {
-      .wide-bento-item {
-        grid-column: span 2;
-      }
+    /* True Interactive 3D Hologram Tilt Panel */
+    .hologram-card {
+      background: var(--bg-panel-elevated); border: var(--fib-1) solid var(--border-dim);
+      border-radius: var(--fib-8); padding: var(--fib-34); position: relative;
+      transform-style: preserve-3d;
+      transition: border-color var(--lucas-ms-18) var(--ease-lucas-smooth), transform var(--lucas-ms-11) linear;
+      cursor: crosshair;
+    }
+    .hologram-card:hover { border-color: var(--border-bright); }
+
+    /* Float child elements above card surface plane using absolute depth mapping */
+    .z-layer-1 { transform: translateZ(25px); transition: transform var(--lucas-ms-29) var(--ease-lucas-3d); }
+    .z-layer-2 { transform: translateZ(55px); text-shadow: 0 10px 20px rgba(0,0,0,0.8); }
+    
+    .card-glare {
+      position: absolute; inset: 0; border-radius: inherit; pointer-events: none;
+      background: radial-gradient(circle at var(--mx, 50%) var(--my, 50%), rgba(255,255,255,0.06) 0%, transparent 60%);
     }
 
-    .interactive-node {
-      background: var(--bg-surface-flat);
-      border: 1px solid var(--border-hardened);
-      border-radius: var(--fib-8);
-      padding: var(--fib-34);
-      position: relative;
-      transition: border-color var(--lucas-ms-11) linear;
+    /* Kinetic Action Node Trigger */
+    .kinetic-trigger {
+      background: linear-gradient(135deg, rgba(99,102,241,0.1), rgba(0,242,254,0.05));
+      border: var(--fib-1) solid var(--border-bright); color: var(--text-pure);
+      padding: var(--fib-13) var(--fib-21); font-family: inherit; font-size: var(--pad-sm);
+      border-radius: var(--fib-3); cursor: pointer; position: relative; overflow: hidden;
+      transition: all var(--lucas-ms-18) var(--ease-lucas-snap);
+      transform-style: preserve-3d;
     }
-
-    .interactive-node:hover {
-      border-color: var(--border-interactive);
+    .kinetic-trigger:hover {
+      transform: translateY(-2px) translateZ(10px);
+      box-shadow: 0 var(--fib-13) var(--fib-34) rgba(99, 102, 241, 0.2);
     }
+    .kinetic-trigger:active { transform: translateY(1px) translateZ(2px); }
 
-    .interactive-node::before {
-      content: ''; position: absolute; top: 0; left: 0; width: var(--fib-3); height: 100%;
-      background: var(--glow-primary); opacity: 0; transition: opacity var(--lucas-ms-18) ease;
+    /* Performance Monitors & Realtime Logic Canvas */
+    .telemetry-row {
+      background: rgba(0,0,0,0.3); border: var(--fib-1) solid var(--border-dim);
+      padding: var(--fib-13); border-radius: var(--fib-3); display: flex; justify-content: space-between;
+      align-items: center; font-size: var(--pad-xs);
     }
+    .telemetry-value { color: var(--neon-accent); font-weight: bold; }
 
-    .interactive-node:hover::before { opacity: 1; }
+    /* Real-time Hardware Track Graph Rendering Rails */
+    .pulse-rail { background: rgba(0,0,0,0.5); height: var(--fib-5); border-radius: var(--fib-1); overflow: hidden; margin-top: var(--fib-8); }
+    .pulse-bar { height: 100%; width: 0%; background: var(--neon-primary); transition: width var(--lucas-ms-76) var(--ease-lucas-smooth); }
 
-    /* Custom CSS Hardware Acceleration Bar Plots */
-    .graph-rail {
-      background: var(--bg-dark-absolute);
-      height: var(--fib-21);
-      border-radius: var(--fib-3);
-      overflow: hidden;
-      margin-top: var(--fib-13);
+    /* View Switcher Spin Core Loader */
+    .console-loader {
+      position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) rotateX(45deg);
+      width: var(--fib-55); height: var(--fib-55);
+      border: var(--fib-2) solid var(--border-dim); border-top-color: var(--neon-accent); border-bottom-color: var(--neon-warn);
+      border-radius: 50%; animation: pipelineSpin var(--lucas-ms-76) linear infinite;
     }
-
-    .graph-fill {
-      height: 100%; width: 0%;
-      background: linear-gradient(90deg, var(--glow-primary), var(--glow-accent));
-      transition: width var(--lucas-ms-76) cubic-bezier(0.1, 0.9, 0.2, 1);
-    }
-
-    /* Async Loading Indicator Component */
-    .matrix-spinner {
-      width: var(--trib-44); height: var(--trib-44);
-      border: var(--fib-3) solid var(--border-hardened);
-      border-top-color: var(--glow-primary);
-      border-radius: 50%;
-      animation: spin var(--lucas-ms-76) linear infinite;
-      position: absolute; top: 50%; left: 50%; margin: calc(-1 * var(--trib-24)) 0 0 calc(-1 * var(--trib-24));
-    }
-    @keyframes spin { to { transform: rotate(360deg); } }
+    @keyframes pipelineSpin { to { transform: translate(-50%, -50%) rotateX(45deg) rotate(360deg); } }
   </style>
 </head>
 <body>
 
-  <aside id="sidebar-left">
-    <div class="lab-tag">FUTELLAB // 0M</div>
-    <ul class="nav-stack">
-      <li data-route="blueprint"><a href="#blueprint">01 // Matrix Spec</a></li>
-      <li data-route="analytics"><a href="#analytics">02 // Vector Grid</a></li>
-      <li data-route="motion"><a href="#motion">03 // Quantum Delay</a></li>
+  <header>
+    <div class="console-title">0MATH // CORE // <span>V2.SPA</span></div>
+    <div id="runtime-clock" style="font-size: var(--pad-xs); color: var(--text-dark);">SYS_RUN: 0000.00s</div>
+  </header>
+
+  <aside id="sidebar-navigation">
+    <ul class="nav-group">
+      <li class="nav-item active-node" data-target="quantum"><a class="nav-link" href="#quantum"><span>01 // Quantum Stage</span><span>☉</span></a></li>
+      <li class="nav-item" data-target="vectors"><a class="nav-link" href="#vectors"><span>02 // Vector Grid</span><span>☱</span></a></li>
+      <li class="nav-item" data-target="kinematics"><a class="nav-link" href="#kinematics"><span>03 // Kinematics</span><span>⚡</span></a></li>
     </ul>
   </aside>
 
-  <main id="stage-container">
-    <div id="router-target"></div>
+  <main id="main-viewport">
+    <div id="router-view-mount"></div>
   </main>
 
-  <aside id="sidebar-right-hud">
-    <div class="hud-card">
-      <p style="font-size: var(--pad-sm); color: var(--text-low-contrast);">SYSTEM ROUTER LIFECYCLE</p>
-      <div id="hud-lifecycle-log" style="font-size: var(--pad-xs); margin-top: var(--fib-5); color: var(--text-high-contrast);">INIT: Awaiting Step...</div>
+  <aside id="telemetry-sidebar">
+    <div style="font-size: var(--pad-xs); color: var(--text-pure); font-weight: 900; letter-spacing: 0.1em; border-bottom: 1px solid var(--border-dim); padding-bottom: var(--fib-8);">REALTIME SUB-THREAD LOGS</div>
+    
+    <div class="telemetry-row">
+      <span>THREAD ACTIVE MODULE</span>
+      <span class="telemetry-value" id="active-log-id">NULL</span>
+    </div>
+    
+    <div class="telemetry-row">
+      <span>PIPELINE DISPATCH RATE</span>
+      <span class="telemetry-value" id="pipeline-fps">-- FPS</span>
     </div>
 
-    <div class="hud-card">
-      <p style="font-size: var(--pad-sm); color: var(--text-low-contrast);">RENDER PIPELINE EFFICIENCY</p>
-      <div class="hud-metric" id="fps-display">-- FPS</div>
-      <p style="font-size: var(--pad-xs); color: var(--text-low-contrast); margin-top: var(--fib-3);">Target Stability: 60FPS</p>
-    </div>
-
-    <div class="hud-card">
-      <p style="font-size: var(--pad-sm); color: var(--text-low-contrast);">SYSTEM MATRIX SCALAR PLAYGROUND</p>
-      <input type="range" min="0.5" max="2" step="0.1" value="1" class="slider-control" id="scalar-engine">
-      <div style="display: flex; justify-content: space-between; font-size: var(--pad-xs); margin-top: var(--fib-8);">
-        <span>MIN: 0.5x</span>
-        <span id="scalar-value" style="color: var(--glow-primary); font-weight: bold;">1.0x</span>
-        <span>MAX: 2.0x</span>
+    <div class="telemetry-row" style="flex-direction: column; align-items: stretch; gap: var(--fib-5);">
+      <div style="display: flex; justify-content: space-between;">
+        <span>Z-AXIS CACHED STRESS LOAD</span>
+        <span class="telemetry-value" id="z-load-pct">0%</span>
       </div>
+      <div class="pulse-rail"><div class="pulse-bar" id="load-bar"></div></div>
     </div>
   </aside>
 
-  <template id="view-blueprint">
-    <div class="stage-wrapper">
-      <h2>Mathematical Design Matrix Specification</h2>
-      <p style="margin-top: var(--fib-8); font-size: var(--pad-sm);">Dynamic execution tracking via layout structural bindings.</p>
+  <template id="view-quantum">
+    <div class="spatial-stage">
+      <h2 class="z-layer-1" style="font-size: var(--pad-xl); color: var(--text-pure); margin-bottom: var(--fib-34);">01 // High Spatial Perspective Field</h2>
       
-      <div class="matrix-bento-grid">
-        <div class="interactive-node wide-bento-item">
-          <h4>Fibonacci Micro-Paddings Array</h4>
-          <p style="font-size: var(--pad-sm); margin-top: var(--fib-8);">Simulating automated mathematical layout flow mechanics down to layout roots.</p>
-          <div class="graph-rail"><div class="graph-fill" data-gauge="100%"></div></div>
+      <div class="spatial-grid-bento">
+        <div class="hologram-card dynamic-tilt">
+          <div class="card-glare"></div>
+          <div class="z-layer-1" style="font-size: var(--pad-xs); color: var(--neon-accent); font-weight: bold; margin-bottom: var(--fib-8);">COMP_ID // 408-A</div>
+          <h3 class="z-layer-2" style="color: var(--text-pure); margin-bottom: var(--fib-13);">Dynamic Depth Plane Alpha</h3>
+          <p style="font-size: var(--pad-sm); line-height: 1.6; margin-bottom: var(--fib-21);">Move your cursor across this container face to test real-time multi-axis calculation metrics.</p>
+          <button class="kinetic-trigger">Isolate Layer Matrix</button>
         </div>
-        <div class="interactive-node">
-          <h4>Padovan Typographic Target Step</h4>
-          <p style="font-size: var(--pad-sm); margin-top: var(--fib-8);">Non-harmonic modular typographic allocation structures.</p>
-          <div class="graph-rail"><div class="graph-fill" data-gauge="65%"></div></div>
-        </div>
-        <div class="interactive-node">
-          <h4>Pell Viewport Control Scaling</h4>
-          <p style="font-size: var(--pad-sm); margin-top: var(--fib-8);">Silver ratio bounding box structures matching device constraints.</p>
-          <div class="graph-rail"><div class="graph-fill" data-gauge="45%"></div></div>
+
+        <div class="hologram-card dynamic-tilt">
+          <div class="card-glare"></div>
+          <div class="z-layer-1" style="font-size: var(--pad-xs); color: var(--neon-warn); font-weight: bold; margin-bottom: var(--fib-8);">COMP_ID // 408-B</div>
+          <h3 class="z-layer-2" style="color: var(--text-pure); margin-bottom: var(--fib-13);">Dynamic Depth Plane Beta</h3>
+          <p style="font-size: var(--pad-sm); line-height: 1.6; margin-bottom: var(--fib-21);">Children process unique vector transformation metrics independent of mother matrices.</p>
+          <button class="kinetic-trigger" style="border-color: var(--neon-warn);">Mutate Spatial Core</button>
         </div>
       </div>
     </div>
   </template>
 
-  <template id="view-analytics">
-    <div class="stage-wrapper">
-      <h2>Reactive Data Vector Grids</h2>
-      <p style="margin-top: var(--fib-8); font-size: var(--pad-sm);">Dynamic calculations executing calculations live via CSS properties.</p>
+  <template id="view-vectors">
+    <div class="spatial-stage">
+      <h2 style="font-size: var(--pad-xl); color: var(--text-pure); margin-bottom: var(--fib-8);">02 // Complex Vector Grid Console</h2>
+      <p style="font-size: var(--pad-sm); margin-bottom: var(--fib-34);">Reactive data grid running computational loops concurrently.</p>
       
-      <div class="matrix-bento-grid">
-        <div class="interactive-node">
-          <span style="font-size: var(--pad-xs); color: var(--glow-accent);">NODE STATE 01</span>
-          <h3 style="margin-top: var(--fib-13)">$trib-274</h3>
-          <p style="font-size: var(--pad-sm); color: var(--text-low-contrast); margin-top: var(--fib-5);">Minimum safe spatial box resolution metric limit block.</p>
+      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: var(--fib-13); transform-style: preserve-3d;" id="vector-nodes-container">
         </div>
-        <div class="interactive-node">
-          <span style="font-size: var(--pad-xs); color: var(--glow-accent);">NODE STATE 02</span>
-          <h3 style="margin-top: var(--fib-13)">$pell-px-408</h3>
-          <p style="font-size: var(--pad-sm); color: var(--text-low-contrast); margin-top: var(--fib-5);">Maximum interface slide out modular control layout limit boundary.</p>
-        </div>
-      </div>
-
-      <div class="interactive-node" style="margin-top: var(--fib-21);">
-        <h4>Live Calculated Vectors Array Map</h4>
-        <div style="display: flex; gap: var(--fib-8); align-items: flex-end; height: var(--pell-29); margin-top: var(--fib-21); background: var(--bg-dark-absolute); padding: var(--fib-13); border-radius: var(--fib-5);">
-          <div class="graph-fill" data-gauge="20%" style="width: 12.5%; height: 0%;" id="bar-1"></div>
-          <div class="graph-fill" data-gauge="40%" style="width: 12.5%; height: 0%;" id="bar-2"></div>
-          <div class="graph-fill" data-gauge="85%" style="width: 12.5%; height: 0%;" id="bar-3"></div>
-          <div class="graph-fill" data-gauge="50%" style="width: 12.5%; height: 0%;" id="bar-4"></div>
-          <div class="graph-fill" data-gauge="95%" style="width: 12.5%; height: 0%;" id="bar-5"></div>
-          <div class="graph-fill" data-gauge="30%" style="width: 12.5%; height: 0%;" id="bar-6"></div>
-          <div class="graph-fill" data-gauge="70%" style="width: 12.5%; height: 0%;" id="bar-7"></div>
-          <div class="graph-fill" data-gauge="60%" style="width: 12.5%; height: 0%;" id="bar-8"></div>
-        </div>
-      </div>
     </div>
   </template>
 
-  <template id="view-motion">
-    <div class="stage-wrapper">
-      <h2>Lucas Sequence Micro-Interaction Matrices</h2>
-      <p style="margin-top: var(--fib-8); font-size: var(--pad-sm);">Testing visual flow and rendering thread prioritization parameters.</p>
+  <template id="view-kinematics">
+    <div class="spatial-stage">
+      <h2 style="font-size: var(--pad-xl); color: var(--text-pure); margin-bottom: var(--fib-8);">03 // Lucas Curve Motion Kinematics</h2>
+      <p style="font-size: var(--pad-sm); margin-bottom: var(--fib-34);">Direct testing workbench for custom Lucas cubic-bezier motion states.</p>
       
-      <div class="matrix-bento-grid" id="motion-cascade-matrix" style="margin-top: var(--fib-34);">
+      <div class="hologram-card" style="margin-bottom: var(--fib-34);">
+        <h4 style="color: var(--text-pure); margin-bottom: var(--fib-21);">Kinetic Interpolation Comparison Engine</h4>
+        
+        <div style="display: flex; flex-direction: column; gap: var(--fib-21);">
+          <div>
+            <div style="display: flex; justify-content: space-between; font-size: var(--pad-xs); margin-bottom: var(--fib-5);">
+              <span>Standard Linear (Web Default)</span><code>linear</code>
+            </div>
+            <div style="background: rgba(0,0,0,0.5); border: 1px solid var(--border-dim); height: var(--fib-21); border-radius: var(--fib-3); position: relative; overflow: hidden;">
+              <div class="kinematics-runner" style="height: 100%; width: var(--fib-34); background: var(--text-dark); position: absolute; left: 0; transition: left var(--lucas-ms-123) linear;"></div>
+            </div>
+          </div>
+
+          <div>
+            <div style="display: flex; justify-content: space-between; font-size: var(--pad-xs); margin-bottom: var(--fib-5);">
+              <span>Lucas Deceleration Curve</span><code>var(--ease-lucas-smooth)</code>
+            </div>
+            <div style="background: rgba(0,0,0,0.5); border: 1px solid var(--border-dim); height: var(--fib-21); border-radius: var(--fib-3); position: relative; overflow: hidden;">
+              <div class="kinematics-runner" style="height: 100%; width: var(--fib-34); background: var(--neon-primary); position: absolute; left: 0; transition: left var(--lucas-ms-123) var(--ease-lucas-smooth);"></div>
+            </div>
+          </div>
+
+          <div>
+            <div style="display: flex; justify-content: space-between; font-size: var(--pad-xs); margin-bottom: var(--fib-5);">
+              <span>Lucas Spatial Kinetic Overshoot</span><code>var(--ease-lucas-3d)</code>
+            </div>
+            <div style="background: rgba(0,0,0,0.5); border: 1px solid var(--border-dim); height: var(--fib-21); border-radius: var(--fib-3); position: relative; overflow: hidden;">
+              <div class="kinematics-runner" style="height: 100%; width: var(--fib-34); background: var(--neon-accent); position: absolute; left: 0; transition: left var(--lucas-ms-123) var(--ease-lucas-3d);"></div>
+            </div>
+          </div>
         </div>
+
+        <button class="kinetic-trigger" id="fire-kinematics-test" style="margin-top: var(--fib-34);">Trigger Velocity Tests</button>
+      </div>
     </div>
   </template>
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      const target = document.getElementById('router-target');
-      const lifecycleLogger = document.getElementById('hud-lifecycle-log');
-      let activeViewInstance = null;
+      const mount = document.getElementById('router-view-mount');
+      const activeLogId = document.getElementById('active-log-id');
+      const fpsDisplay = document.getElementById('pipeline-fps');
+      const loadText = document.getElementById('z-load-pct');
+      const loadBar = document.getElementById('load-bar');
 
-      // Real-Time Frame Rate Meter Analytics Engine
-      let frameCount = 0, lastCheckTime = performance.now(), currentFps = 60;
-      function executeFpsMeterLoop() {
-        frameCount++;
+      // --- Telemetry Systems & Runtime Tracking Engine ---
+      const launchTime = performance.now();
+      setInterval(() => {
+        const delta = (performance.now() - launchTime) / 1000;
+        document.getElementById('runtime-clock').innerText = `SYS_RUN: ${delta.toFixed(2)}s`;
+      }, 40);
+
+      let frames = 0, lastTimestamp = performance.now();
+      function runFpsPipelineMeter() {
+        frames++;
         const now = performance.now();
-        if (now >= lastCheckTime + 1000) {
-          currentFps = Math.round((frameCount * 1000) / (now - lastCheckTime));
-          document.getElementById('fps-display').innerText = `${currentFps} FPS`;
-          frameCount = 0;
-          lastCheckTime = now;
+        if (now >= lastTimestamp + 1000) {
+          const fps = Math.round((frames * 1000) / (now - lastTimestamp));
+          fpsDisplay.innerText = `${fps} HZ`;
+          frames = 0;
+          lastTimestamp = now;
         }
-        requestAnimationFrame(executeFpsMeterLoop);
+        requestAnimationFrame(runFpsPipelineMeter);
       }
-      requestAnimationFrame(executeFpsMeterLoop);
+      requestAnimationFrame(runFpsPipelineMeter);
 
-      // System Dynamic Scalar Transformation Pipeline
-      const scalarInput = document.getElementById('scalar-engine');
-      const scalarValueDisplay = document.getElementById('scalar-value');
-      scalarInput.addEventListener('input', (e) => {
-        const value = e.target.value;
-        document.documentElement.style.setProperty('--math-scalar', value);
-        scalarValueDisplay.innerText = `${parseFloat(value).toFixed(1)}x`;
-      });
+      // --- Interactive Multi-Axis 3D Spatial Tilt Mechanics ---
+      function handleCard3DTiltMove(e) {
+        const card = e.currentTarget;
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        
+        // Compute displacement calculations based on mathematical midpoints
+        const px = x / rect.width;
+        const py = y / rect.height;
+        const tiltX = ((py - 0.5) * -26).toFixed(2);
+        const tiltY = ((px - 0.5) * 26).toFixed(2);
 
-      // View Controller Matrix Initialization Hooks
-      const viewHooks = {
-        blueprint: {
-          onMount: (container) => {
-            container.querySelectorAll('.graph-fill').forEach(fill => {
-              requestAnimationFrame(() => fill.style.width = fill.getAttribute('data-gauge'));
+        card.style.transform = `rotateX(${tiltX}deg) rotateY(${tiltY}deg) scale3d(1.02, 1.02, 1.02)`;
+        card.style.setProperty('--mx', `${px * 100}%`);
+        card.style.setProperty('--my', `${py * 100}%`);
+
+        // Log calculated kinetic telemetry metrics to sidebar metrics panels
+        const mechanicalLoad = Math.abs(parseFloat(tiltX)) + Math.abs(parseFloat(tiltY));
+        const stressPct = Math.min(Math.round((mechanicalLoad / 26) * 100), 100);
+        loadText.innerText = `${stressPct}%`;
+        loadBar.style.width = `${stressPct}%`;
+      }
+
+      function cleanCard3DTiltReset(e) {
+        const card = e.currentTarget;
+        card.style.transform = `rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
+        loadText.innerText = `0%`;
+        loadBar.style.width = `0%`;
+      }
+
+      // --- Lifecycle Specific Feature Initializers ---
+      const viewLifecycles = {
+        quantum: {
+          mount: (container) => {
+            container.querySelectorAll('.dynamic-tilt').forEach(card => {
+              card.addEventListener('mousemove', handleCard3DTiltMove);
+              card.addEventListener('mouseleave', cleanCard3DTiltReset);
             });
-          },
-          onUnmount: () => {}
+          }
         },
-        analytics: {
-          onMount: (container) => {
-            container.querySelectorAll('.graph-fill').forEach(fill => {
-              requestAnimationFrame(() => fill.style.height = fill.getAttribute('data-gauge'));
-            });
-          },
-          onUnmount: () => {}
-        },
-        motion: {
-          onMount: (container) => {
-            const grid = container.querySelector('#motion-cascade-matrix');
-            // Hard structural Lucas metrics sequence values array
-            const lucasDelays = ['--lucas-ms-2', '--lucas-ms-4', '--lucas-ms-7', '--lucas-ms-11', '--lucas-ms-18', '--lucas-ms-29'];
-            
-            for(let i = 0; i < 6; i++) {
-              const element = document.createElement('div');
-              element.className = 'interactive-node';
-              element.style.opacity = '0';
-              element.style.transform = 'scale(0.95)';
-              element.style.transition = `all var(--lucas-ms-47) ease`;
-              element.style.transitionDelay = `var(${lucasDelays[i]})`;
-              element.innerHTML = `<h4>Cascade Step 0${i+1}</h4><p style="font-size:var(--pad-sm); margin-top:var(--fib-8)">Delay Target Bind: ${lucasDelays[i]}</p>`;
-              grid.appendChild(element);
+        vectors: {
+          mount: (container) => {
+            const rootGrid = container.querySelector('#vector-nodes-container');
+            for(let i = 0; i < 24; i++) {
+              const node = document.createElement('div');
+              node.style.cssText = `
+                background: rgba(255,255,255,0.01); border: 1px solid var(--border-dim);
+                padding: var(--fib-13); font-size: var(--pad-xs); border-radius: var(--fib-2);
+                text-align: center; cursor: pointer; transition: all var(--lucas-ms-11) var(--ease-lucas-snap);
+              `;
+              node.innerHTML = `<div style="color:var(--text-dark)">NODE</div><div style="color:var(--neon-accent); font-weight:bold;">0x${i.toString(16).toUpperCase()}</div>`;
               
-              requestAnimationFrame(() => {
-                element.style.opacity = '1';
-                element.style.transform = 'scale(1)';
+              node.addEventListener('mouseenter', () => {
+                node.style.background = 'rgba(0, 242, 254, 0.05)';
+                node.style.borderColor = 'var(--neon-accent)';
+                node.style.transform = 'translateZ(15px) scale(1.05)';
               });
+              node.addEventListener('mouseleave', () => {
+                node.style.background = 'rgba(255,255,255,0.01)';
+                node.style.borderColor = 'var(--border-dim)';
+                node.style.transform = 'translateZ(0px) scale(1)';
+              });
+              rootGrid.appendChild(node);
             }
-          },
-          onUnmount: () => {}
+          }
+        },
+        kinematics: {
+          mount: (container) => {
+            const fireBtn = container.querySelector('#fire-kinematics-test');
+            const runners = container.querySelectorAll('.kinematics-runner');
+            let sequenceToggleState = false;
+
+            fireBtn.addEventListener('click', () => {
+              sequenceToggleState = !sequenceToggleState;
+              runners.forEach(runner => {
+                runner.style.left = sequenceToggleState ? 'calc(100% - var(--fib-34))' : '0px';
+              });
+            });
+          }
         }
       };
 
-      // Production Grade Routing Engine Configuration
-      async function routerEngine() {
-        const startTime = performance.now();
-        const rawHash = window.location.hash.replace('#', '');
-        const currentRoute = rawHash || 'blueprint';
+      // --- Core SPA Hash Navigation System Engine ---
+      async function executionRouterPipeline() {
+        const currentHash = window.location.hash.replace('#', '');
+        const verifiedRoute = currentHash || 'quantum';
 
-        // Execute safety unmount cleanup processes if required
-        if (activeViewInstance && viewHooks[activeViewInstance]?.onUnmount) {
-          viewHooks[activeViewInstance].onUnmount();
-        }
-
-        // Active state navigation menu update loop
-        document.querySelectorAll('.nav-stack li').forEach(item => {
-          if(item.getAttribute('data-route') === currentRoute) {
-            item.classList.add('active-route');
+        // Update active navigation index classes
+        document.querySelectorAll('.nav-item').forEach(item => {
+          if(item.getAttribute('data-target') === verifiedRoute) {
+            item.classList.add('active-node');
           } else {
-            item.classList.remove('active-route');
+            item.classList.remove('active-node');
           }
         });
 
-        // Set layout loader simulation feedback state
-        target.innerHTML = '<div class="matrix-spinner"></div>';
+        // Set visual loading context during views reconstruction
+        mount.innerHTML = '<div class="console-loader"></div>';
+        activeLogId.innerText = `LOADING...`;
 
-        // Async simulation delay using Lucas 290ms parameters
-        await new Promise(resolve => setTimeout(resolve, 290));
+        // Mathematical synthetic network cycle pause (Lucas 180ms Duration)
+        await new Promise(resolve => setTimeout(resolve, 180));
 
-        const viewTemplate = document.getElementById(`view-${currentRoute}`);
-        if (!viewTemplate) {
-          target.innerHTML = `<div style="padding:var(--fib-34); color:red;">Router Fault: View Archetype Target Not Found [${currentRoute}]</div>`;
+        const template = document.getElementById(`view-${verifiedRoute}`);
+        if (!template) {
+          mount.innerHTML = `<div style="color:var(--neon-warn); padding:var(--fib-34);">ROUTE INTERRUPT ERROR: Archetype node data payload not found.</div>`;
           return;
         }
 
-        const viewContent = viewTemplate.content.cloneNode(true);
-        target.innerHTML = '';
-        target.appendChild(viewContent);
+        const viewInstance = template.content.cloneNode(true);
+        mount.innerHTML = '';
+        mount.appendChild(viewInstance);
 
-        const mountedWrapper = target.querySelector('.stage-wrapper');
-        activeViewInstance = currentRoute;
+        const mountedWrapper = mount.querySelector('.spatial-stage');
+        activeLogId.innerText = verifiedRoute.toUpperCase();
 
-        // Fire lifecycle allocation maps
-        if (viewHooks[currentRoute]?.onMount) {
-          viewHooks[currentRoute].onMount(mountedWrapper);
+        // Fire isolated structural components construction hooks
+        if (viewLifecycles[verifiedRoute]?.mount) {
+          viewLifecycles[verifiedRoute].mount(mountedWrapper);
         }
 
+        // Trigger hardware accelerated entry animations via the render loop thread
         requestAnimationFrame(() => {
-          if(mountedWrapper) mountedWrapper.classList.add('mounted');
-          const endTime = performance.now();
-          lifecycleLogger.innerHTML = `ROUTE: /${currentRoute}<br>MOUNT TIME: ${parseFloat(endTime - startTime).toFixed(2)}ms`;
+          if (mountedWrapper) {
+            mountedWrapper.classList.add('active-mount');
+          }
         });
       }
 
-      window.addEventListener('hashchange', routerEngine);
-      // Bootstrapping initialization sequence execution
-      routerEngine();
+      window.addEventListener('hashchange', executionRouterPipeline);
+      // Run bootstrap initialization pipeline
+      executionRouterPipeline();
     });
   </script>
 </body>
